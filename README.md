@@ -12,7 +12,7 @@ O Terraform lerá seu arquivo e baixará as dependencies do provider definido no
 terraform init
 ```
 
-# Mostrando o que o TF criará com o terraform plan
+# Mostrando recursos a serem criados com o terraform plan
 
 Esse comando nos mostrará o que será criado com um código **.tf**
 
@@ -20,7 +20,7 @@ Esse comando nos mostrará o que será criado com um código **.tf**
 terraform plan
 ```
 
-# Aplicando códigos com o terraform apply
+# Criando recursos o terraform apply
 
 O **terraform apply** aplica e cria os recursos descritos no manifesto **.tf**
 
@@ -47,3 +47,20 @@ resource "aws_instance" "myec2" {
    instance_type = "t2.micro"
 }
 ```
+
+# Deletando recursos com o terraform destroy
+
+Para deletar todos os recursos criados em um diretório (estando nele):
+
+```bash
+terraform destroy
+```
+
+Caso desejemos selecionar o recurso a ser deletado, podemos usar a flag **-target**
+
+```bash
+terraform destroy -target aws_instance.myec2
+```
+
+**Importante:** O valor do target refere-se ao nome dado ao **resource** em sua criação, e.g imagem abaixo:
+
