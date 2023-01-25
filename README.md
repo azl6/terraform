@@ -12,13 +12,15 @@ O Terraform lerá seu arquivo e baixará as dependencies do provider definido no
 terraform init
 ```
 
-# Mostrando recursos a serem criados com o terraform plan
+# Mostrando recursos a serem criados e retornados ao desired-state com o terraform plan
 
 Esse comando nos mostrará o que será criado com um código **.tf**
 
 ```bash
 terraform plan
 ```
+
+Outra funcionalidade sua é a de mostrar quando o **desired-state** da infraestrutura (configurações definidas no **.tf**) encontra-se diferente do **current-state** (devido a alguma alteração manual, etc...). Nesse caso, com o **terraform plan**, o Terraform nos avisará que eles estão diferentes, e mostrará o que precisa ser alterado para que tudo seja retornado ao **desired-state**. Tais mudanças só serão "commitadas" com o **terraform apply**.
 
 # Criando recursos o terraform apply
 
