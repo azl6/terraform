@@ -32,7 +32,7 @@ terraform apply
 
 Nesse caso, o **Access Key ID** e **Secret Access Key** já existem como variáveis de ambiente, inicializadas no **~/.bashrc**
 
-```json
+```bash
 # "aws_instance" se refere a criação de uma instância EC2
 # "myec2" se refere ao nome da instância
 
