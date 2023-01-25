@@ -66,3 +66,6 @@ terraform destroy -target aws_instance.myec2
 
 **Importante:** O valor do target refere-se ao nome dado ao **resource** em sua criação, e.g imagem abaixo:
 
+![image](https://user-images.githubusercontent.com/80921933/214487650-f86e2fba-d83f-4848-93f7-2f81aeb04b31.png)
+
+
