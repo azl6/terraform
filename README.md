@@ -68,7 +68,7 @@ terraform destroy -target aws_instance.myec2
 
 ![image](https://user-images.githubusercontent.com/80921933/214487650-f86e2fba-d83f-4848-93f7-2f81aeb04b31.png)
 
-# Versionamento do provider
+# Travando a versão dos plugins do provider
 
 Alterar abruptamente a versão do provider pode nos trazer problemas. 
 
@@ -76,11 +76,26 @@ Para evitar isso, podemos "travar" a versão do nosso provider em uma específic
 
 ![image](https://user-images.githubusercontent.com/80921933/214776718-6a3b062b-36e3-4090-87d0-1ca17ae741c1.png)
 
-Tais valores devem ser fornecidos no manifesto **.tf**. 
+Tais valores devem ser fornecidos no campo a seguir:
 
-Ao executar `terraform init`, o arquivo `.terraform.lock.hcl` será criado, com as específicações de limitações fornecidas no manifesto.
+```bash
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "4.51.0" ############## Aqui!
+    }
+  }
+}
 
-Ao alterar a versão no manifesto para uma versão fora da constraint informada no primeiro, **não teremos sucesso**, porque o arquivo de lock nos bloqueia de fazê-lo. Para tal, usamos a flag **-upgrade**:
+provider "aws" {
+  # Configuration options
+}
+```
+
+Ao executar `terraform init`, o arquivo `.terraform.lock.hcl` será criado, com as limitações fornecidas no manifesto.
+
+Ao alterar a versão no manifesto para uma versão fora da constraint informada no primeiro, **não teremos sucesso**, porque o arquivo de lock nos bloqueia de fazê-lo. Para executarmos `terraform init` com sucesso após "violarmos" uma constraint, usamos a flag **-upgrade**:
 
 ```bash
 terraform init -upgrade
