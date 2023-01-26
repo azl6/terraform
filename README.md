@@ -88,9 +88,7 @@ terraform {
   }
 }
 
-provider "aws" {
-  # Configuration options
-}
+provider "aws" {}
 ```
 
 Ao executar `terraform init`, o arquivo `.terraform.lock.hcl` será criado, com as limitações fornecidas no manifesto.
