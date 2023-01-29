@@ -103,8 +103,34 @@ Os outputs podem ser utilizados para printarem atributos dos recursos criados. N
 Atributos que podem ser usados como output podem ser encontrados na página do recurso (aws_instance, aws_s3_bucket, etc...),na seção **Argument Reference** como no seguinte link: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#argument-reference
 
 ```bash
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "4.52.0"
+    }
+  }
+}
 
+provider "aws" {
+  region = "sa-east-1"
+}
+
+resource "aws_s3_bucket" "myBucket" { # Definindo um S3 Bucket
+  bucket = "azl6-terraform-bucket"
+}
+
+output "bucket_region" { # Printando a região do bucket no output
+  value = aws_s3_bucket.myBucket.region
+}
+
+output "bucket_arn" { # Printando o arn do bucket no output
+  value = aws_s3_bucket.myBucket.arn
+}
 ```
 
 Output:
+
+![image](https://user-images.githubusercontent.com/80921933/215355986-82f52108-b51a-4457-ba49-88011cc4583f.png)
+
 
