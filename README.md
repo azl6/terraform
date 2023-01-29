@@ -30,7 +30,7 @@ O **terraform apply** aplica e cria os recursos descritos no manifesto **.tf**
 terraform apply
 ```
 
-# Exemplo 1 e a criação simples de uma instância EC2
+# Exemplo simpleEc2 e a criação simples de uma instância EC2
 
 Nesse caso, o **Access Key ID** e **Secret Access Key** já existem como variáveis de ambiente, inicializadas no **~/.bashrc**
 
@@ -40,8 +40,6 @@ Nesse caso, o **Access Key ID** e **Secret Access Key** já existem como variáv
 
 provider "aws" {
   region     = "sa-east-1"
-  access_key = "CREDENCIAIS-AQUI"
-  secret_key = "CREDENCIAIS-AQUI"
 }
 
 resource "aws_instance" "myec2" {
@@ -93,7 +91,7 @@ provider "aws" {}
 
 Ao executar `terraform init`, o arquivo `.terraform.lock.hcl` será criado, com as limitações fornecidas no manifesto.
 
-Ao alterar a versão no manifesto para uma versão fora da constraint informada no primeiro, **não teremos sucesso**, porque o arquivo de lock nos bloqueia de fazê-lo. Para executarmos `terraform init` com sucesso após "violarmos" uma constraint, usamos a flag **-upgrade**:
+Ao alterar a versão no manifesto para uma versão fora da constraint informada no primeiro, **não teremos sucesso na execução do terraform init**, porque o arquivo de lock nos bloqueia de fazê-lo. Para executarmos `terraform init` com sucesso após "violarmos" uma constraint, usamos a flag **-upgrade**:
 
 ```bash
 terraform init -upgrade
