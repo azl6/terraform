@@ -22,4 +22,3 @@ output "bucket_region" { # Printando a região do bucket no output
 output "bucket_arn" { # Printando o arn do bucket no output
   value = aws_s3_bucket.myBucket.arn
 }
-
