@@ -234,3 +234,36 @@ output "SG_VPC_ID" {
     value = aws_security_group.mySg.vpc_id
 }
 ```
+
+# Formas de explicitar valores de variáveis
+
+Se nenhuma variável for fornecida explicitamente, a **default** (definida no bloco variable) será usada.
+
+É possível especificar variáveis de diferentes formas:
+
+1. Flag -var no terraform plan
+
+  Ao executar `terraform plan`, podemos informar a flag **-var \<VAR>=\<VALUE>**
+
+  ```bash
+  terraform plan -var "myvar=VALUE"
+  ```
+2. Arquivo terraform.tfvars
+
+  Podemos também especificar variáveis dentro do arquivo **terraform.tfvars**. Essas variáveis terão prioridade sobre a **default** definida em um bloco **variable**
+
+3. Especificando um arquivo de variável cujo nome difere de terraform.tfvars
+
+  É possível fazê-lo, especificando a flag -var-file=\<FILE> no momento da execução do `terraform plan`
+
+  ```bash
+  terraform plan -var-file=<MY_FILE>
+  ```
+
+4. Usando environment-variables com o prefixo TF_VAR
+
+  Basta definir uma env variable com o prefixo TF_VAR_, e o Terraform a utilizará
+
+  ```bash
+  export TF_VAR_INSTANCE_TYPE="t2.micro"
+  ```
