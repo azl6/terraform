@@ -181,7 +181,9 @@ output "SG_VPC_ID" {
 Nesse exemplo, o arquivo `variables.tf` serve de origem para as variáveis.
 
 ```bash
-
+variable "customIpCIDR" {
+    default = "192.168.0.0/24"
+}
 ```
 
 As variáveis são usadas no arquivo `usingVariables.tf`
@@ -207,7 +209,7 @@ resource "aws_security_group" "mySg" {
         from_port        = 22
         to_port          = 22
         protocol         = "tcp"
-        cidr_blocks      = [var.customIp] # Referenciando IP do variables.tf
+        cidr_blocks      = [var.customIpCIDR] # Referenciando IP do variables.tf
     }
 
         ingress {
@@ -215,7 +217,7 @@ resource "aws_security_group" "mySg" {
         from_port        = 80
         to_port          = 80
         protocol         = "tcp"
-        cidr_blocks      = [var.customIp] # Referenciando IP do variables.tf
+        cidr_blocks      = [var.customIpCIDR] # Referenciando IP do variables.tf
     }
 
         ingress {
@@ -223,7 +225,7 @@ resource "aws_security_group" "mySg" {
         from_port        = 443
         to_port          = 443
         protocol         = "tcp"
-        cidr_blocks      = [var.customIp] # Referenciando IP do variables.tf
+        cidr_blocks      = [var.customIpCIDR] # Referenciando IP do variables.tf
     }
 
 }
