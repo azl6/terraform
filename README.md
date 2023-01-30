@@ -427,5 +427,68 @@ resource "aws_instance" "name" {
 }
 ```
 
+# Terraform functions
+
+- **lookup:** Busca um registro de um map fornecido. Caso a **key** fornecida bata com alguma key do map, o valor referente àquela key será retornado. Caso nada bata, o valor **default** será usado
+
+  sintaxe:
+
+  1. lookup(\<map>, key, default)
+  2. lookup(\<map>, key)
+
+  exemplos:
+
+  lookup({key="valor1", key2="valor2"}, key1) RETORNA valor1
+  lookup({key="valor1", key2="valor2"}, key2) RETORNA valor2
+
+<br>
+
+- **element:** Retorna de uma lista um valor que corresponde ao index fornecido
+
+  sintaxe:
+
+  1. element(\<list>, index)
+
+  exemplos:
+
+  element(["a", "b", "c"], 0) RETORNA a
+  element(["a", "b", "c"], 1) RETORNA b
+  element(["a", "b", "c"], 2) RETORNA c
+
+<br>
+
+- **file:** Lê um arquivo no caminho especificado e retorna o valor como uma string
+
+  sintaxe: 
+
+  1. file(\<path/to/file/file.txt>)
+
+<br>
+
+**formatdate**: Usada para formatar datas
+
+sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/formatdate
+
+
+# Criando uma key-pair para utilizar no SSH das instâncias EC2
+
+Primeiro, criamos um recurso do tipo **aws_key_pair**:
+
+```bash
+resource "aws_key_pair" "ssh_key" {
+  key_name = "login-key"
+  public_key = file(/path/to/pub_key/key.pub) # Chave pública
+}
 ```
+
+Depois, basta vinculá-la ao recurso de **aws_instance**:
+
+```bash
+resource "aws_instance" "myEc2" {
+  ami = "ami-12345678"
+  instance_type = "t2.micro"
+  key_name = aws_key_pair.ssh_key.key_name # Referenciando a chave pública
+}
 ```
+
+
