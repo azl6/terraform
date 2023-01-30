@@ -294,7 +294,7 @@ resource "aws_instance" "myec2" {
 }
 ```
 
-# Utilizando o count.index para fornecer diferentes valores
+# Utilizando o count.index para pegar o número da iteração feita
 
 Quando utilizamos **count** para provisionar um número específico de recursos, a variável **count.index** fica disponível para ser utilizada. O count funciona como um for-loop.
 
@@ -353,5 +353,41 @@ resource "aws_instance" "myEc2" {   # Os recursos provisionados
     tags = { 
       Name = var.environments[ "${count.index}" ] 
     }
+}
+```
+
+# Exemplo conditional e provisionando instâncias baseado em uma condição
+
+Nesse exemplo: 
+
+- A instância testEc2 só será provisionada se a variável isTest for true. 
+- A instância devEc2 só será provisionada se a variável isTest for false.
+
+A variável foi criada no arquivo **variables.tf** e um valor foi atribuido a ela no arquivo **terraform.tfvars**
+
+```bash
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "4.52.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "sa-east-1"
+}
+
+resource "aws_instance" "testEc2" {
+    ami = "ami-0b0d54b52c62864d6"
+    instance_type = "t2.micro"
+    count = var.isTest == true? 1 : 0 ## Condicional ternário básico.
+}                                      # 
+                                       # testEc2 só será provisionada se
+resource "aws_instance" "devEc2" {     # isTest == true
+    ami = "ami-0b0d54b52c62864d6"      # 
+    instance_type = "t2.micro"         # devEc2 só será provisionada se
+    count = var.isTest == true? 0 : 1 ## isTest == false
 }
 ```
