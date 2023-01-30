@@ -250,7 +250,7 @@ Se nenhuma variável for fornecida explicitamente, a **default** (definida no bl
   ```
 **2. Arquivo terraform.tfvars**
 
-  Podemos também especificar variáveis dentro do arquivo **terraform.tfvars**. Essas variáveis terão prioridade sobre a **default** definida em um bloco **variable**
+  Podemos também especificar variáveis dentro do arquivo **terraform.tfvars**. Essas variáveis terão prioridade sobre a **default** definida em um bloco **variable**. É comum utilizar um arquivo para as variáveis, e popular os seus respectivos valores com o arquivo **terraform.tfvars**
 
 **3. Especificando um arquivo de variável cujo nome difere de terraform.tfvars**
 
@@ -267,3 +267,91 @@ Se nenhuma variável for fornecida explicitamente, a **default** (definida no bl
   ```bash
   export TF_VAR_INSTANCE_TYPE="t2.micro"
   ```
+
+# Informações sobre variáveis
+
+Em um bloco **variable**, é possível especificar explicitamente tipos para as variáveis:
+
+```bash
+variable "myvar"{
+  type = <string,number,list,map>
+}
+``` 
+
+Para referenciar itens em **mapas**, basta usar sua chave.
+
+Para referenciar itens em **lists**, basta usar a posição do item
+
+# Provisionando mais de um recurso com o count
+
+Para provisionar duas instâncias EC2, podemos repedir seu bloco de criação duas vezes. Entretanto, é melhor usar a variável **count** para fazê-lo.
+
+```bash
+resource "aws_instance" "myec2" {
+   ami = "ami-0b0d54b52c62864d6"
+   instance_type = "t2.micro"
+   count = 2
+}
+```
+
+# Utilizando o count.index para fornecer diferentes valores
+
+Quando utilizamos **count** para provisionar um número específico de recursos, a variável **count.index** fica disponível para ser utilizada. O count funciona como um for-loop.
+
+De tal forma, caso provisionemos a seguinte instância:
+
+```bash
+resource "aws_instance" "myEc2" {
+    ami = "ami-0b0d54b52c62864d6"
+    instance_type = "t2.micro"
+    count = 3
+
+    tags = {
+      Name = instance${count.index}
+    }
+}
+```
+
+As instâncias terão os seguintes nomes: **instance0, instance1, instance2**
+
+# Exemplo countIndexWithValues para provisionar recursos com o count puxando valores customizados de uma lista 
+
+É possível fornecer valores personalizados para itens dos recursos provisionados, armazenados tais valores em variáveis, utilizando uma lista, e puxandos-o pelo count.index
+
+Para tal:
+
+**1. Definimos uma variable de list com os valores desejados**
+
+```bash
+variable "environments" {
+  type = list
+  default = ["instance-dev", "instance-hml", "instance-prod"]
+}
+```
+
+**2. Ao nomear os recursos, puxar os indexes da lista**
+
+```bash
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "4.52.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "sa-east-1"
+}
+
+resource "aws_instance" "myEc2" {   # Os recursos provisionados
+   ami = "ami-0b0d54b52c62864d6" # terão a tag Name vindos da variável
+    instance_type = "t2.micro" # environments, definido no outro arquivo
+    count = 3                  # nesse diretório
+
+    tags = { 
+      Name = var.environments[ "${count.index}" ] 
+    }
+}
+```
