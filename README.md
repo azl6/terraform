@@ -715,11 +715,8 @@ output "userNames" {
 }
 ```
 
-Com o comando abaixo:
+Com o `terraform output`, obtemos a seguinte saída:
 
-```bash
-terraform output userNames
-```
+![image](https://user-images.githubusercontent.com/80921933/215405027-0a7df17a-95a4-40aa-a974-1f48a77e4664.png)
 
-Obtemos a seguinte saída:
 
