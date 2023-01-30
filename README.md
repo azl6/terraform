@@ -537,3 +537,11 @@ Também é possível exportar os logs para um caminho, executando:
 export TF_LOG_PATH=<PATH>
 ```
 
+# Formatando o código com o terraform fmt
+
+Estando no diretório do arquivo, podemos formatar todo o código com o comando:
+
+```
+terraform fmt
+```
+
