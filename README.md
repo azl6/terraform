@@ -433,13 +433,13 @@ resource "aws_instance" "name" {
 
   sintaxe:
 
-  1. lookup(\<map>, key, default)
-  2. lookup(\<map>, key)
+  1. lookup(\<map>, key, default) <br>
+  2. lookup(\<map>, key) 
 
   exemplos:
 
-  lookup({key="valor1", key2="valor2"}, key1) RETORNA valor1
-  lookup({key="valor1", key2="valor2"}, key2) RETORNA valor2
+  lookup({key="valor1", key2="valor2"}, key1) RETORNA valor1 <br>
+  lookup({key="valor1", key2="valor2"}, key2) RETORNA valor2 
 
 <br>
 
@@ -451,9 +451,9 @@ resource "aws_instance" "name" {
 
   exemplos:
 
-  element(["a", "b", "c"], 0) RETORNA a
-  element(["a", "b", "c"], 1) RETORNA b
-  element(["a", "b", "c"], 2) RETORNA c
+  element(["a", "b", "c"], 0) RETORNA a <br>
+  element(["a", "b", "c"], 1) RETORNA b <br>
+  element(["a", "b", "c"], 2) RETORNA c 
 
 <br>
 
