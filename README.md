@@ -519,4 +519,21 @@ resource "aws_instance" "instance-1" {
 }
 ```
 
+# Debugando o terraform plan com logs
+
+Por padrão, o `terraform plan` não tem logs. Entretanto, podemos habilitar diferentes modalidades de log: TRACE, DEBUG, INFO, WARN, ERROR.
+
+Para tal, basta executarmos:
+
+```bash
+export TF_LOG=<MODALIDADE> 
+```
+
+Agora, ao re-executar `terraform plan`, teremos muitos logs sendo gerados.
+
+Também é possível exportar os logs para um caminho, executando:
+
+```bash
+export TF_LOG_PATH=<PATH>
+```
 
