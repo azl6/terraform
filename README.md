@@ -391,3 +391,41 @@ resource "aws_instance" "devEc2" {     # isTest == true
     count = var.isTest == true? 0 : 1 ## isTest == false
 }
 ```
+
+# Exemplo locals e a utilização de variáveis locais
+
+O recurso **locals** pode ser usado para definir variáveis que serão referenciadas naquele escopo do manifesto.
+
+Neste exemplo, o **locals** foi criado para definir as tags da instância a ser provisionada.
+
+```bash
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "4.52.0"
+    }
+  }
+}
+
+locals { # Variáveis locais
+  mytags = {
+    Name = "MyName"
+    Environment = "Production"
+  }
+}
+
+provider "aws" {
+  region = "sa-east-1"
+}
+
+resource "aws_instance" "name" {
+    ami = "ami-0b0d54b52c62864d6"
+    instance_type = "t2.micro"
+
+    tags = local.mytags # Utilização das tags do locals
+}
+```
+
+```
+```
