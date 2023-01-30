@@ -667,3 +667,19 @@ output "arns" { ################## Será printado o arn
   value = aws_iam_user.lb[*].arn # de TODOS os IAM users
 }                              ### que foram criados
 ```
+
+# Salvando o terraform plan em um arquivo
+
+(Para a prova de certificação)
+
+Isso é vantajoso porque, caso alguém altere a configuração do arquivo original, ainda podemos aplicar o `terraform apply` a partir do arquivo gerado.
+
+```bash
+terraform plan -out=<PATH>
+```
+
+Depois, basta executar o `terraform apply`, passando o arquivo gerado como parâmetro:
+
+```bash
+terraform apply <PATH>
+```
