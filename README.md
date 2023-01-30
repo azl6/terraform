@@ -683,3 +683,43 @@ Depois, basta executar o `terraform apply`, passando o arquivo gerado como parâ
 ```bash
 terraform apply <PATH>
 ```
+
+# Printando outputs após as mudanças já terem sido aplicadas
+
+É possíve usar o comando `terraform output \<OUTPUT_NAME>` para printar outputs após os recursos já terem sido aplicados.
+
+No exemplo abaixo, criamos 3 usuários IAM:
+
+```bash
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "4.52.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "sa-east-1"
+}
+
+resource "aws_iam_user" "iamUsers" {
+  name  = "user.${count.index}"
+  path  = "/system/"
+  count = 3
+}
+
+output "userNames" {
+  value = aws_iam_user.iamUsers[*].name
+}
+```
+
+Com o comando abaixo:
+
+```bash
+terraform output userNames
+```
+
+Obtemos a seguinte saída:
+
