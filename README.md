@@ -541,7 +541,15 @@ export TF_LOG_PATH=<PATH>
 
 Estando no diretório do arquivo, podemos formatar todo o código com o comando:
 
-```
+```bash
 terraform fmt
+```
+
+# Validando o código
+
+Com o comando abaixo, podemos validar se um manifesto é válido ou não, buscando por erros de sintaxe:
+
+```bash
+terraform validate
 ```
 
