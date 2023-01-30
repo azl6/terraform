@@ -491,4 +491,32 @@ resource "aws_instance" "myEc2" {
 }
 ```
 
+# Utilização de um data-source para puxar imagens atualizadas
+
+O recurso **data** pode ser usado para especificar uma origem do dado, nesse caso, uma AMI. No código a seguir, a AMI mais recente será buscada, para qualquer região que for especificada.
+
+```bash
+provider "aws" {
+  region     = "ap-southeast-1"
+  access_key = "YOUR-ACCESS-KEY"
+  secret_key = "YOUR-SECRET-KEY"
+}
+
+data "aws_ami" "app_ami" {
+  most_recent = true ##############
+  owners = ["amazon"]             # Bloco definindo que a AMI será:
+                                  # 1- A mais recente da região selecionada
+                                  # 2- Proprietárias da Amazon
+  filter {                        # 3- Não sei a informação "values"
+    name   = "name"               # 
+    values = ["amzn2-ami-hvm*"] ###
+  }
+}
+
+resource "aws_instance" "instance-1" {
+    ami = data.aws_ami.app_ami.id
+   instance_type = "t2.micro"
+}
+```
+
 
