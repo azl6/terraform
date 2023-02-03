@@ -441,15 +441,15 @@ resource "aws_instance" "name" {
 
   Sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/file
 
-**formatdate**: Usada para formatar datas
+- **formatdate**: Usada para formatar datas
 
   Sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/formatdate
 
-**zipmap**: "Gera" um map a partir de duas listas, combinando seus indexes como key-value
+- **zipmap**: "Gera" um map a partir de duas listas, combinando seus indexes como key-value
 
   Sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/zipmap
 
-**toset**: Converte uma lista para o formato de SET, que não permite duplicatas e não é indexado
+- **toset**: Converte uma lista para o formato de SET, que não permite duplicatas e não é indexado
 
   Sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/toset
 
