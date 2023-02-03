@@ -887,3 +887,10 @@ provisioner "remote-exec" {
 ![image](https://user-images.githubusercontent.com/80921933/216548098-354948c3-8e9b-47da-ac8e-1be5cb64750a.png)
 
 
+# Utilização do Null Resource
+
+(Para a certificação)
+
+O Null Resource é usado para provisionar recursos somente se outros recursos foram provisionados.
+
+Para mais detalhes, consultar aula 61.
