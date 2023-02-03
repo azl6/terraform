@@ -724,3 +724,63 @@ terraform plan -refresh=false
 (Para a certificação)
 
 Significa que tem um update rolando, quando rodamos `terraform plan`
+
+# Exemplo forEach e a utilização dele
+
+O for_each pode ser usado para percorrer listas, mapas, etc.
+
+Quando ele é usado, cria-se uma nova variável chamada **each**, que pode ser referenciada para retornar os valores da lista/mapa.
+
+Em um mapa, pode-se chamar **each.key** ou **each.value** para referenciar o key e o value do mapa, respectivamente. Em mapas ou listas de objetos, podemos referenciar atributos dos objetos normalmente, como em: **each.value.person.name**, e por aí vai.
+
+No exemplo `forEach`, criei uma **variable** com um mapa de objeto, onde o objeto representava a tag de cada EC2 criada.
+
+```bash
+variable "ec2Tags" {
+
+  type = map
+
+  default = {
+
+    tag1 = {
+      "nome" = "EC2-DEV",
+      "environment" = "DEVELOPMENT"
+    },
+    tag2 = {
+      "nome" = "EC2-PROD",
+      "environment" = "PRODUCTION"
+    }
+
+  }
+}
+```
+
+Depois, referenciei essa variable no manifesto principal, e usei o mapa para popular os valores das tags.
+
+```bash
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "4.53.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "sa-east-1"
+}
+
+resource "aws_instance" "myEc2" {
+
+  for_each = var.ec2Tags # For each na variable
+
+  ami           = "ami-0b0d54b52c62864d6"
+  instance_type = "t2.micro"
+
+  tags = {
+      "Name"        = each.value.nome ######## Populando dados com o for_each
+      "Environment" = each.value.environment # a partir da variable
+  }
+}
+```
