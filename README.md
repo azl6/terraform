@@ -431,27 +431,27 @@ resource "aws_instance" "name" {
 
 - **lookup:** Busca um registro de um map fornecido. Caso a **key** fornecida bata com alguma key do map, o valor referente àquela key será retornado. Caso nada bata, o valor **default** será usado
 
-Sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/lookup
+  Sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/lookup
 
 - **element:** Retorna de uma lista um valor que corresponde ao index fornecido
 
-Sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/element
+  Sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/element
 
 - **file:** Lê um arquivo no caminho especificado e retorna o valor como uma string
 
-Sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/file
+  Sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/file
 
 **formatdate**: Usada para formatar datas
 
-Sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/formatdate
+  Sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/formatdate
 
 **zipmap**: "Gera" um map a partir de duas listas, combinando seus indexes como key-value
 
-Sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/zipmap
+  Sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/zipmap
 
 **toset**: Converte uma lista para o formato de SET, que não permite duplicatas e não é indexado
 
-Sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/toset
+  Sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/toset
 
 
 # Criando uma key-pair para utilizar no SSH das instâncias EC2
