@@ -729,7 +729,7 @@ Significa que tem um update rolando, quando rodamos `terraform plan`
 
 O for_each pode ser usado para percorrer listas, mapas, etc.
 
-Quando ele é usado, cria-se uma nova variável chamada **each**, que pode ser referenciada para retornar os valores da lista/mapa.
+Quando ele é usado, cria-se uma nova variável chamada **each**, que pode ser usada para referenciar o objeto da vez da iteração.
 
 Em um mapa, pode-se chamar **each.key** ou **each.value** para referenciar o key e o value do mapa, respectivamente. Em mapas ou listas de objetos, podemos referenciar atributos dos objetos normalmente, como em: **each.value.person.name**, e por aí vai.
 
