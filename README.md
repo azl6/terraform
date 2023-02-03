@@ -882,3 +882,8 @@ provisioner "remote-exec" {
 } 
 ```
 
+# Informações sobre a flag On Failure dos provisioners
+
+![image](https://user-images.githubusercontent.com/80921933/216548098-354948c3-8e9b-47da-ac8e-1be5cb64750a.png)
+
+
