@@ -2,6 +2,10 @@
 
 https://registry.terraform.io/providers/hashicorp/aws/latest/docs
 
+# Link para o Terraform Registry
+
+https://registry.terraform.io/
+
 # Baixando dependencies de um provider com o terraform init
 
 A execução do comando abaixo deve ser feita **na mesma pasta** onde seu arquivo **.tf** se encontra. 
