@@ -838,3 +838,31 @@ resource "aws_instance" "myEc2" {
   }
 }
 ```
+
+# Exemplo localExec e execução local de comandos após o deployment
+
+O provisioner **local-exec** é usado para executar comandos **LOCAIS** após o deployment de uma instância. 
+
+```bash
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "4.53.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "sa-east-1"
+}
+
+resource "aws_instance" "myec2" {
+  ami           = "ami-0b0d54b52c62864d6"
+  instance_type = "t2.micro"
+
+  provisioner "local-exec" {
+    command = "COMANDO AQUI"
+  }
+}
+```
