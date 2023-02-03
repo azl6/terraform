@@ -943,3 +943,29 @@ module "meuModulo" {
   instance_type = "t2.large" # Substituindo o valor padrão
 }
 ```
+
+# Utilizando locals nos módulos para previnir que um valor possa ser reescrito
+
+Ao declarar o módulo abaixo:
+
+```bash
+resource "aws_instance" "myEC2" {
+  ami = "ami-123456"
+  instance_type = var.ec2InstanceType # Puxando valor do variable
+}
+```
+
+Usuários que referenciarem tal módulo poderão facilmente alterar o valor da variável **instance_type**. Esse pode ser um comportamento indesejado.
+
+Caso precisemos que um módulo **não permita alteração em algumas de suas variáveis** (mas ainda evitando a necessidade de hard-codar o valor), podemos utilizar **locals**:
+
+```bash
+resource "aws_instance" "myEC2" {
+  ami = "ami-123456"
+  instance_type = local.ec2InstanceType # Referenciando valor do local
+}
+
+locals { # Definição do local
+  ec2InstanceType = t2.micro
+}
+```
