@@ -784,3 +784,13 @@ resource "aws_instance" "myEc2" {
   }
 }
 ```
+
+# Gerando um grafo representativo do deployment
+
+(Para a certificação)
+
+O comando abaixo gerará um arquivo DOT, que poderá ser usado com outros softwares para expor uma representação visual do deployment
+
+```bash
+terraform graph
+```
