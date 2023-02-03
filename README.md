@@ -1034,5 +1034,32 @@ resource "aws_instance" "myEc2" {      #############################
 
 Agora basta selecionar o workspace desejado e deployar.
 
+# Implementando Terraform Backends
+
+Obs: Nesse tutorial, foi usado o S3 como referência. Para mais opções de backend, consultar a documentação: [INSERIR LINK AQUI]
+
+O Terraform Backend consiste no local onde o `terraform.tfstate` será armazenado.
+
+Para configurar o S3 como backend, podemos:
+
+- Criar o arquivo **backend.tf**
+  
+  ```bash
+  touch backend.tf
+  ```
+
+- Inserir nele o seguinte conteúdo:
+
+  ```bash
+  terraform {
+    backend "s3" {
+      bucket = "BUCKET-NAME"
+      key    = "KEY/terraform.tfstate"
+      region = "REGION"
+    }
+  }
+  ```
+
+Pronto! Agora, ao rodar o `terraform apply`, nosso arquivo será direcionado para o bucket especificado na configuração.
 
 
