@@ -719,4 +719,18 @@ Com o `terraform output`, obtemos a seguinte saída:
 
 ![image](https://user-images.githubusercontent.com/80921933/215405027-0a7df17a-95a4-40aa-a974-1f48a77e4664.png)
 
+# Rodando o terraform plan somente em alguns recursos
 
+Podemos escolher rodar o `terraform plan` em somente alguns recursos, de modo a reduzir o numero de "refreshes" a serem feitos. Para isso, os manifestos dos recursos devem estar distribuídos em diferentes arquivos **.tf**
+
+```bash
+terraform plan -target=<RESOURCE>.<GIVEN_RESOURCE_NAME>
+```
+
+# Indicando que não precisa dar refresh no terraform plan
+
+Podemos setar a flag **refresh** para **false** ao rodar `terraform plan`. Isso informará ao Terraform que ele não deverá fazer o fetch do estado dos recursos deployados. (Aula 48)
+
+```bash
+terraform plan -refresh=false
+```
