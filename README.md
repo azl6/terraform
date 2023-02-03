@@ -734,3 +734,9 @@ Podemos setar a flag **refresh** para **false** ao rodar `terraform plan`. Isso 
 ```bash
 terraform plan -refresh=false
 ```
+
+# Significado do ~
+
+(Para a certificação)
+
+Significa que tem um update rolando, quando rodamos `terraform plan`
