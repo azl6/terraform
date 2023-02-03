@@ -431,39 +431,15 @@ resource "aws_instance" "name" {
 
 - **lookup:** Busca um registro de um map fornecido. Caso a **key** fornecida bata com alguma key do map, o valor referente àquela key será retornado. Caso nada bata, o valor **default** será usado
 
-  sintaxe:
-
-  1. lookup(\<map>, key, default) <br>
-  2. lookup(\<map>, key) 
-
-  exemplos:
-
-  lookup({key="valor1", key2="valor2"}, key1) RETORNA valor1 <br>
-  lookup({key="valor1", key2="valor2"}, key2) RETORNA valor2 
-
-<br>
+Sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/lookup
 
 - **element:** Retorna de uma lista um valor que corresponde ao index fornecido
 
-  sintaxe:
-
-  1. element(\<list>, index)
-
-  exemplos:
-
-  element(["a", "b", "c"], 0) RETORNA a <br>
-  element(["a", "b", "c"], 1) RETORNA b <br>
-  element(["a", "b", "c"], 2) RETORNA c 
-
-<br>
+Sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/element
 
 - **file:** Lê um arquivo no caminho especificado e retorna o valor como uma string
 
-  sintaxe: 
-
-  1. file(\<path/to/file/file.txt>)
-
-<br>
+Sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/file
 
 **formatdate**: Usada para formatar datas
 
@@ -472,6 +448,10 @@ Sintaxe e utilização: https://developer.hashicorp.com/terraform/language/funct
 **zipmap**: "Gera" um map a partir de duas listas, combinando seus indexes como key-value
 
 Sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/zipmap
+
+**toset**: Converte uma lista para o formato de SET, que não permite duplicatas e não é indexado
+
+Sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/toset
 
 
 # Criando uma key-pair para utilizar no SSH das instâncias EC2
