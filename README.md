@@ -919,3 +919,27 @@ module "ec2Module" {
 (Declarei o provider em um arquivo separado)
 
 Agora, basta rodar os comandos e tudo funcionará normalmente.
+
+# Substituição de valores em um módulo
+
+Ao declarar um módulo, podemos ter a necessidade de ter valores dinâmicos. 
+
+Tal requerimento pode ser atingido com a utilização de variáveis
+
+```bash
+resource "aws_instance" "myEC2" {
+  ami = "ami-123456"
+  instance_type = var.ec2InstanceType # Puxando valor do variable
+}
+```
+
+Sendo assim, o módulo terá um valor padrão, que foi definido na variable.
+
+Quando houver a necessidade de substituí-lo, podemos fazê-lo na referência do módulo:
+
+```bash
+module "meuModulo" {
+  source = "/meu/caminho"
+  instance_type = "t2.large" # Substituindo o valor padrão
+}
+```
