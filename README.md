@@ -972,4 +972,6 @@ locals { # Definição do local
 
 # Referenciando output de um módulo pai
 
+(Aula 67 para futuras referências)
+
 ![image](https://user-images.githubusercontent.com/80921933/216578140-b1f452b1-8331-4d65-82bf-e67724d54bf9.png)
