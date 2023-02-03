@@ -467,7 +467,11 @@ resource "aws_instance" "name" {
 
 **formatdate**: Usada para formatar datas
 
-sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/formatdate
+Sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/formatdate
+
+**zipmap**: "Gera" um map a partir de duas listas, combinando seus indexes como key-value
+
+Sintaxe e utilização: https://developer.hashicorp.com/terraform/language/functions/zipmap
 
 
 # Criando uma key-pair para utilizar no SSH das instâncias EC2
