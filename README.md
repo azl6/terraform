@@ -894,3 +894,28 @@ provisioner "remote-exec" {
 O Null Resource é usado para provisionar recursos somente se outros recursos foram provisionados.
 
 Para mais detalhes, consultar aula 61.
+
+# Exemplo simpleEc2Module para a criação de um módulo simples para uma instância EC2
+
+Com os módulos, podemos declarar blocos de códigos reutilizáveis, que podem ser referenciados de outros arquivos.
+
+Nesse exemplo, criei um módulo de uma instância EC2:
+
+```bash
+resource "aws_instance" "myEc2" {
+  ami           = "ami-0b0d54b52c62864d6"
+  instance_type = "t2.micro"
+}
+```
+
+Depois, referenciei esse módulo no arquivo principal (indicando o caminho para o módulo criado acima):
+
+```bash
+module "ec2Module" {
+  source = "./simpleEc2Module/"
+}
+```
+
+(Declarei o provider em um arquivo separado)
+
+Agora, basta rodar os comandos e tudo funcionará normalmente.
