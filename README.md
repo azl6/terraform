@@ -866,3 +866,19 @@ resource "aws_instance" "myec2" {
   }
 }
 ```
+
+# Creation Time and Destroy Time provisioners
+
+**Creation-Time provisioners** são o padrão. São executados na criação de uma instância, e não precisamos adicionar nenhuma opção. **(Para a certificação)** Se o Creation-Time provisioner **falhar**, o recurso será "taintado" (ou seja, em sua próxima atualização, ele será destruído e re-criado).
+
+**Destroy-Time provisioners** são executados antes de um recurso ser destruído.
+
+```bash
+provisioner "remote-exec" {
+    when    = destroy
+    inline = [
+      "sudo yum -y remove nano"
+    ]
+} 
+```
+
