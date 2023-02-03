@@ -979,3 +979,60 @@ locals { # Definição do local
 (Aula 67 para futuras referências)
 
 ![image](https://user-images.githubusercontent.com/80921933/216578140-b1f452b1-8331-4d65-82bf-e67724d54bf9.png)
+
+# Exemplo workspaces e operações com eles no Terraform
+
+Para cada ambiente criado - **dev** e **prod** por exemplo - precisamos de um **instance_type** padrão.
+
+Para esse requisito, podemos utilizar os **workspaces**.
+
+Para criar novos workspaces, usaremos os seguintes comandos:
+
+```bash
+terraform workspace new dev && \
+terraform workspace new prod
+```
+
+Agora, considerando o seguinte requisito:
+
+- O workspace **dev** deve ter a **instance_type** `t2.micro` como padrão
+- O workspace **prod** deve ter a **instance_type** `t2.large` como padrão
+
+Para tal, definimos um manifesto com as respectivas **instance_type** para cada ambiente:
+
+```bash
+variable "instanceTypes" {
+    type = map
+    default = {
+        dev = "t2.micro",
+        prod = "t2.large"
+    }
+}
+```
+
+Agora, podemos usar a função `lookup(map, key)` juntamente a variável `terraform.workspace` (que retorna o workspace atual) para deployar o **instance_type** correto:
+
+```bash
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "4.52.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "sa-east-1"
+}                                      #-> Deployando o instance_type adequado
+                                       #
+resource "aws_instance" "myEc2" {      #############################
+    ami = "ami-0b0d54b52c62864d6"                                  #
+    instance_type = lookup(var.instanceTypes, terraform.workspace) #
+}
+```
+
+Agora basta selecionar o workspace desejado e deployar.
+
+
+
