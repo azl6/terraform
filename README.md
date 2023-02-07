@@ -30,6 +30,22 @@ Understand how to reference module's outputs (and how to create them!)
 
 Understand that the **sensible flag** stops `terraform apply` from printing its value. However, the value is still written to the **.tfstate** file
 
+It is recommended to explicitly set a version constraint for external modules. 
+
+Version contraints are only supported for modules installed from a registry, such as TF Registry or TF Cloud Registry
+
+Syntax to reference TF Registry modules: \<NAMESPACE>/\<NAME>/\<PROVIDER>. Example: hashicorp/consul/aws. Modules from private registry also have a \<HOSTNAME> before the \<NAMESPACE> 
+
+Review functions, especially lookup and element
+
+If the backend supports, TF will lock the state for write operations when someone is already performing an action on it. Terraform also have a way to force unlock. Review this, please
+
+Sentinel is a policy-as-code tool to verify required things, e.g If the launched resource has tags, or if the bucket has encryption enabled
+
+Even if we use the **sensible=true** flag, the output in the **tfstate** file won't be encrypted. So, the tfstate file itself should be treated as sensible data. TF Cloud encryps tfstate files, and use TLS for encryption in-flight. S3 as a backend also has this option.
+
+For TF Cloud, when using full-remote operations, commands like `t plan` can be executed in TF Cloud, with its output streamed to the local terminal
+
 # Link para a documentação para a AWS
 
 https://registry.terraform.io/providers/hashicorp/aws/latest/docs
