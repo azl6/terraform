@@ -1239,3 +1239,12 @@ Quando a flag **sensitive** é setada como TRUE, o output terá o seguinte resul
 ![image](https://user-images.githubusercontent.com/80921933/217221511-e1103ac1-e9f6-4d3e-9467-f454b30c01a5.png)
 
 Entretando, o campo não serã encryptado ou escondido no arquivo **.tfstate**
+
+
+# Integração com o Hashicorp Vault
+
+![image](https://user-images.githubusercontent.com/80921933/217223525-83d0a65a-52b9-4c22-9527-95921b5a758c.png)
+
+Nota importante para a certificação:
+
+![image](https://user-images.githubusercontent.com/80921933/217223686-13e7fb34-7a10-4b98-846c-1d6b37d362a7.png)
