@@ -1,3 +1,20 @@
+# To review next time
+
+Each Terraform Workspace allows multiple state files of a single configuration (?)
+
+Understand the concept of root-module and child-module
+
+Understand how to reference module's outputs (and how to create them!)
+
+Provider configuration block is not mandatory with locals and outputs only as resources
+
+Variables with undefined value will not result in an error. Instead, it will prompt the user to provide its value.
+
+Workspaces are managed in the terraform.tfstate.d directory. Remember the terraform.
+workspace variable. Remember also the workspace commands.
+
+Review terraform state commands
+
 # Anotações para a certificação
 
 Terraform Enterprise suports Airgapped Systems (isolated systems without internet connectivity)
@@ -8,9 +25,9 @@ We can have multiple provider instances with the help of **aliases**
 
 `terraform plan` performs a refresh on the current state of resources (unless the refresh is explicitly disable via -refresh=false), and then determines which actions are necessary to achieve the desired state
 
-`terraform apply` updates the **terraform.tfstate** file
+`terraform apply` updates the **terraform.tfstate** file and the deployed infrastructure
 
-`terraform refresh` reconciles our state file with the current infrastructure (test this!)
+`terraform refresh` updates the **tfstate** file based on the infrastructure. It considers the deployed infrastructure as the source of truth.
 
 Review provisioners (**local-exec** and **remote-exec**). They are **inside the resource block**
 
