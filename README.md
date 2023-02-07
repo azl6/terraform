@@ -1196,7 +1196,7 @@ provider "aws" {
 }                       
                         
 provider "aws" { 
-  alias  = usa
+  alias  = usa ######## Definindo o campo alias
   region = "us-east-1" 
 }
 ```
