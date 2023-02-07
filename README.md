@@ -1112,3 +1112,13 @@ Pronto! Agora, o state lock será armazenado nessa tabela.
 `terraform state rm <RECURSO>`: Remove recursos do **terraform.tfstate**. Tais recursos removidos continuam rodando, porém, não serão mais gerenciados pelo Terraform. Isso significa que, caso esse recurso continue declarado nos arquivos **.tf**, o Terraform tentará **recriá-lo**, já que ele não está mais sendo gerenciado no **terraform.tfstate**
 
 `terraform state show <RECURSO>`: Printa detalhes de um recurso específico rodando na cloud.
+
+# Terraform remote state
+
+O **terraform_remote_state** é uma variável capaz de se conectar com o backend (bucket S3) de outro projeto e referenciar seus outputs. 
+
+Por exemplo, quando temos duas equipes: **Networking** e **Segurança**. 
+
+A equipe de **Networking** usa o bucket-1 para armazenar seu **terraform.tfstate**. Eles criaram um Elastic IP. A equipe de **Segurança** precisa referenciar o arquivo **terraform.tfstate** da equipe de **Networking**, pegar o output que informa qual IP foi gerado, e whitelistá-lo no ingress de um security-group a ser criado.
+
+Isso é possível com o **terraform_remote_state**.
