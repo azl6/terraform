@@ -64,7 +64,7 @@ Review the `terraform output` command!
 
 When configuring a diff backend (no backend > backend) for **the first time**, TF gives us the option to migrate the **.tfstate** file
 
-
+Continue from pointer 46...
 
 # Link para a documentação para a AWS
 
