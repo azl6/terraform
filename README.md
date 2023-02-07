@@ -1217,7 +1217,7 @@ Caso tenhamos o requisito de deployar recursos em diferentes contas, podemos usa
 
 ![image](https://user-images.githubusercontent.com/80921933/217220352-57589222-292f-4466-9474-946c4c8a3a0e.png)
 
-Selecionando um perfil no arquivo, basta informá-lo nas configurações do provider, e selecionar o provider na hora de realizar o deploy de um recurso.
+Selecionando um perfil no arquivo, basta informá-lo nas configurações do provider, e selecionar o provider na hora de realizar o deploy de um recurso (da mesma forma feita no último tópico).
 
 ```bash
 provider "aws" {
