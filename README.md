@@ -62,6 +62,10 @@ Review the `terraform output` command!
 
 ![image](https://user-images.githubusercontent.com/80921933/217269258-240cbee9-6cd5-49f3-a4f1-f332ae0c6292.png)
 
+When configuring a diff backend (no backend > backend) for **the first time**, TF gives us the option to migrate the **.tfstate** file
+
+
+
 # Link para a documentação para a AWS
 
 https://registry.terraform.io/providers/hashicorp/aws/latest/docs
