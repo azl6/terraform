@@ -62,9 +62,58 @@ Review the `terraform output` command!
 
 ![image](https://user-images.githubusercontent.com/80921933/217269258-240cbee9-6cd5-49f3-a4f1-f332ae0c6292.png)
 
-When configuring a diff backend (no backend > backend) for **the first time**, TF gives us the option to migrate the **.tfstate** file
+When configuring a diff backend (no backend > backend) for **the first time**, TF gives us the option to migrate the **.tfstate** file to the new backend
 
-Continue from pointer 46...
+We don't need to provide every single configuration on the backend configuration. We can provide it on initialization with `t init -option1 -option2 -optionn...`
+
+TF taints can be applied to module resources
+
+By default, provisioners that fail will cause `terraform apply` to fail. We can use the **on_failure={continue,fail}** to change this behaviour
+
+Review creation-time provisioners and deletion-time provisioners (using the when flag)
+
+Provide a custom-named **.tfvars** file with the **-var-file=** flag on `terraform apply`
+
+By default, the "local" backend is used (to store the **.tfstate** files)
+
+Check the **required_providers** block
+
+Check the **required_version** variable, which references **Terraform's version**!
+
+To fetch values from a map, we use the following syntax: **var.varName["key"]**
+
+When getting modules from a git repo, by default, the default branch will be used. To change this behaviour, we can use the **ref** argument (refer to item 55.2)
+
+Workspaces are managed in the **terraform.tfstate.d** directory. Remember the **terraform.workspace** variable. Remember also the workspace commands.
+
+Explicit resource dependency with the **depends_on** parameter. It takes a list.
+
+Review `terraform state` commands
+
+**Data source** to get the latest update of AMI, for example
+
+The behaviour of `terraform destroy` can be previewed with `terraform plan -destroy`
+
+Remember usage of flags `-refresh=false` and `-target=\<RESOURCE>`
+
+Remember the **zipmap function**, which builds a map out of two lists
+
+The Vault provider allows Terraform to read from, write to, and configure HashiCorp Vault. Interacting with Vault from Terraform causes any secrets that you read and write to be persisted in Terraform's state file.
+
+Various commands run terraform refresh implicitly, some of these include:
+terraform [plan, apply, destroy]
+Others like terraform [init, import] do not run refresh implicitly.
+
+Both implicit and explicit dependency information is stored in terraform.tfstate file.
+
+The terraform console command provides an interactive console for evaluating
+expressions.
+
+Difference 0.11 and 0.12
+“${var.instance_type}” → 0.11
+var.instance_type → 0.12
+
+GitHub is not the supported backend type in Terraform.
 
 # Link para a documentação para a AWS
 
