@@ -1073,4 +1073,9 @@ Para configurar o S3 como backend, podemos:
 
 Pronto! Agora, ao rodar o `terraform apply`, nosso arquivo será direcionado para o bucket especificado na configuração.
 
+# Informações sobre state locking
+
+Quando alguém está usando um arquivo .tf para deployar/destruir recursos, um arquivo chamado **.terrafor.tfstate.lock.info** é criado no diretório, para indicar que ele está "lockado". Quando isso acontece, outros usuários não conseguem performar ações naquele diretório. Quando a ação do primeiro usuário finalizar, o arquivo some, e o diretório ficará livre para receber novos comandos.
+
+Ao tentar rodar operações em um diretório lockado, teremos um erro: 
 
