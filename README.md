@@ -1173,3 +1173,56 @@ terraform import <RECURSO>.<NOME_RECURSO> <ID_DO_RECURSO_NA_CLOUD>
 ```
 
 Caso as informações do manifesto batam com as informações da instância criada manualmente, um arquivo **terraform.tfstate** será criado, com as informações da instância.
+
+# Múltiplas configurações de região nos providers
+
+Podemos ter o requisito de deployar recursos em mais de uma região. Porém, ao declarar dois blocos de provider, teremos um erro.
+
+```bash
+provider "aws" {
+  region = "sa-east-1" ##
+}                       # Configurações de providers
+                        # referenciando regiões diferentes
+provider "aws" {        #
+  region = "us-east-1" ##
+}
+```
+
+Para resolver o erro gerado nesse caso, podemos definir o campo **alias** nos providers:
+
+```bash
+provider "aws" {
+  region = "sa-east-1" 
+}                       
+                        
+provider "aws" { 
+  alias  = usa
+  region = "us-east-1" 
+}
+```
+
+Agora, no recurso a ser deployado, basta selecionarmos o provider pelo **alias** definido. Essa instância será deployada na região us-east-1:
+
+```bash
+resource "aws_instance" "myEc2" {
+   ami = "ami-0b0d54b52c62864d6"
+   instance_type = "t2.micro"
+   provider = "aws.usa" # Referenciando o alias criado
+}
+```
+
+# Múltiplas configurações de conta nos providers
+
+Caso tenhamos o requisito de deployar recursos em diferentes contas, podemos usar os perfis definidos no arquivo $HOME/.aws/credentials
+
+<IMG CREDENTIALS AQUI>
+
+Selecionando um perfil no arquivo, basta informá-lo nas configurações do provider, e selecionar o provider na hora de realizar o deploy de um recurso.
+
+```bash
+provider "aws" {
+  region  = "sa-east-1"
+  alias   = "brazil"
+  profile = "account02"
+}
+```
