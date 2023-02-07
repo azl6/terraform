@@ -1141,7 +1141,7 @@ Essa declaração informa o arquivo **.tfstate** que o recurso **terraform_remot
 
 Depois, basta referenciarmos esse recurso em nosso ingress do security-group. Note que o arquivo **terraform.tfstate** tem um output declarado:
 
-\<INSERIR OUTPUT>
+![image](https://user-images.githubusercontent.com/80921933/217208249-4ecb780a-aaf7-418c-b3a2-553ced0aa3e0.png)
 
 Para referenciar esse output (e o IP gerado), basta utilizarmos o seguinte caminho: **data.terraform_remote_state.elasticIpEquipeNetworking.outputs.eip_address**
 
