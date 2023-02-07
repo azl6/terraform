@@ -1226,3 +1226,7 @@ provider "aws" {
   profile = "account02"
 }
 ```
+
+# Sensitive parameters
+
+Alguns outputs são sensíveis. Podemos optar por não mostrá-los no output.
