@@ -1,3 +1,7 @@
+# Anotações para a certificação
+
+Terraform Enterprise suports Airgapped Systems 
+
 # Link para a documentação para a AWS
 
 https://registry.terraform.io/providers/hashicorp/aws/latest/docs
