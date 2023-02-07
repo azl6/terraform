@@ -1079,3 +1079,7 @@ Quando alguém está usando um arquivo .tf para deployar/destruir recursos, um a
 
 Ao tentar rodar operações em um diretório lockado, teremos um erro: 
 
+![image](https://user-images.githubusercontent.com/80921933/217188917-45ebbee5-6d28-4758-85c4-de549ec6d82f.png)
+
+Também é possível usar o comando **force-unlock** para forçar a exclusão do arquivo de lock.
+
