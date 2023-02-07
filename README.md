@@ -46,6 +46,8 @@ Even if we use the **sensible=true** flag, the output in the **tfstate** file wo
 
 For TF Cloud, when using full-remote operations, commands like `t plan` can be executed in TF Cloud, with its output streamed to the local terminal
 
+`terraform graph` is used to generate a **DOT** file, that can be converted to an image to represent our deployment
+
 # Link para a documentação para a AWS
 
 https://registry.terraform.io/providers/hashicorp/aws/latest/docs
