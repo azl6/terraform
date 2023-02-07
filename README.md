@@ -1122,3 +1122,42 @@ Por exemplo, quando temos duas equipes: **Networking** e **Segurança**.
 A equipe de **Networking** usa o bucket-1 para armazenar seu **terraform.tfstate**. Eles criaram um Elastic IP. A equipe de **Segurança** precisa referenciar o arquivo **terraform.tfstate** da equipe de **Networking**, pegar o output que informa qual IP foi gerado, e whitelistá-lo no ingress de um security-group a ser criado.
 
 Isso é possível com o **terraform_remote_state**.
+
+Para tal, declaramos o seguinte recurso:
+
+```bash
+data "terraform_remote_state" "elasticIpEquipeNetworking" {
+  backend = "s3"
+
+  config = {
+    bucket = "<BUCKET>" 
+    key    = "<KEY>/terraform.tfstate"
+    region = "<REGIÃO>"               
+  }
+}
+```
+
+Essa declaração informa o arquivo **.tfstate** que o recurso **terraform_remote_state** irá referenciar, além de sua localização (bucket)
+
+Depois, basta referenciarmos esse recurso em nosso ingress do security-group. Note que o arquivo **terraform.tfstate** tem um output declarado:
+
+\<INSERIR OUTPUT>
+
+Para referenciar esse output (e o IP gerado), basta utilizarmos o seguinte caminho: **data.terraform_remote_state.elasticIpEquipeNetworking.outputs.eip_address**
+
+```bash
+
+
+resource "aws_security_group" "allow_tls" {
+  name        = "allow_tls"
+  description = "Allow TLS inbound traffic"
+
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 443
+    to_port          = 443
+    protocol         = "tcp"
+    cidr_blocks      = ["${data.terraform_remote_state.elasticIpEquipeNetworking.outputs.eip_address}/32"] # Referenciando o IP da equipe de Networking
+  }
+}
+```
