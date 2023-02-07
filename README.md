@@ -1230,3 +1230,12 @@ provider "aws" {
 # Sensitive parameters
 
 Alguns outputs são sensíveis. Podemos optar por não mostrá-los no output.
+
+![image](https://user-images.githubusercontent.com/80921933/217221319-c3091c54-8d65-4627-aab1-b3de3eeb0f70.png)
+
+
+Quando a flag **sensitive** é setada como TRUE, o output terá o seguinte resultado:
+
+![image](https://user-images.githubusercontent.com/80921933/217221511-e1103ac1-e9f6-4d3e-9467-f454b30c01a5.png)
+
+Entretando, o campo não serã encryptado ou escondido no arquivo **.tfstate**
