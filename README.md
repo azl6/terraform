@@ -52,6 +52,16 @@ For TF Cloud, when using full-remote operations, commands like `t plan` can be e
 
 Review the `terraform output` command!
 
+![image](https://user-images.githubusercontent.com/80921933/217268306-47a581de-3374-4f76-bde0-cf83d38a4120.png)
+
+![image](https://user-images.githubusercontent.com/80921933/217268608-b760accb-4ec5-43e6-8b3b-d46ac2501906.png)
+
+![image](https://user-images.githubusercontent.com/80921933/217268727-55ee407d-05cd-4d97-bb0f-b34c4a9165c0.png)
+
+![image](https://user-images.githubusercontent.com/80921933/217269186-2cfd63f0-5893-4bf4-b9e3-26d95838719f.png)
+
+![image](https://user-images.githubusercontent.com/80921933/217269258-240cbee9-6cd5-49f3-a4f1-f332ae0c6292.png)
+
 # Link para a documentação para a AWS
 
 https://registry.terraform.io/providers/hashicorp/aws/latest/docs
