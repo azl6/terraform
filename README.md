@@ -1,6 +1,34 @@
 # Anotações para a certificação
 
-Terraform Enterprise suports Airgapped Systems 
+Terraform Enterprise suports Airgapped Systems (isolated systems without internet connectivity)
+
+To update to the latest acceptable version of a provider, run `terraform init -upgrade`
+
+We can have multiple provider instances with the help of **aliases**
+
+`terraform plan` performs a refresh on the current state of resources (unless the refresh is explicitly disable via -refresh=false), and then determines which actions are necessary to achieve the desired state
+
+`terraform apply` updates the **terraform.tfstate** file
+
+`terraform refresh` reconciles our state file with the current infrastructure (test this!)
+
+Review provisioners (**local-exec** and **remote-exec**). They are **inside the resource block**
+
+Review **TF_LOG** and **TF_LOG_PATH** environment variables. Also, review its options (TRACE, DEBUG, INFO, WARN and ERROR)
+
+`terraform import` doesn't write the configuration/manifests. It only brings the state file of deployed infrastructure.
+
+A local cannot refer to itself or to variables that directly or indirectly refer to it (There can't be a cycle)
+
+Each Terraform Workspace allows multiple state files of a single configuration (?)
+
+Review Terraform Modules
+
+Understand the concept of root-module and child-module
+
+Understand how to reference module's outputs (and how to create them!)
+
+Understand that the **sensible flag** stops `terraform apply` from printing its value. However, the value is still written to the **.tfstate** file
 
 # Link para a documentação para a AWS
 
