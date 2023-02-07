@@ -1161,3 +1161,15 @@ resource "aws_security_group" "allow_tls" {
   }
 }
 ```
+
+# Terraform Import
+
+É possível mapear infraestrutura que foi criada manualmente para o Terraform. Para tal, usamos o comando `terraform import`
+
+Caso já tenhamos uma EC2 criada, **devemos criar um manifesto para ela, com todos os atributos da instância EC2 que foi manualmente criada**. Depois, rodamos:
+
+```bash
+terraform import <RECURSO>.<NOME_RECURSO> <ID_DO_RECURSO_NA_CLOUD>
+```
+
+Caso as informações do manifesto batam com as informações da instância criada manualmente, um arquivo **terraform.tfstate** será criado, com as informações da instância.
