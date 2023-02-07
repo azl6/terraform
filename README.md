@@ -115,6 +115,8 @@ var.instance_type → 0.12
 
 GitHub is not the supported backend type in Terraform.
 
+`terraform refresh` considers the current-state to be the "correct", and updates the state file to match it
+
 # Link para a documentação para a AWS
 
 https://registry.terraform.io/providers/hashicorp/aws/latest/docs
