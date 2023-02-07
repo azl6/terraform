@@ -48,6 +48,10 @@ For TF Cloud, when using full-remote operations, commands like `t plan` can be e
 
 `terraform graph` is used to generate a **DOT** file, that can be converted to an image to represent our deployment
 
+![image](https://user-images.githubusercontent.com/80921933/217267861-1e8e20ca-c840-4b0d-8009-3ee95f30e17e.png)
+
+Review the `terraform output` command!
+
 # Link para a documentação para a AWS
 
 https://registry.terraform.io/providers/hashicorp/aws/latest/docs
