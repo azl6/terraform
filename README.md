@@ -1101,3 +1101,14 @@ Quando usamos o S3 como backend, ele não armazena o arquivo de lock (.terraform
 
 Pronto! Agora, o state lock será armazenado nessa tabela.
 
+# Comando state
+
+`terraform state list`: Printa os recursos gerenciados pelo Terraform que estão no arquivo **terraform.tfstate**
+
+`terraform state mv <RECURSO_ANTIGO> <RECURSO_NOVO>`: Usado para renomear recursos, ex: \<RECURSO_ANTIGO> = **aws_instance.NomeAntigo** e \<RECURSO_NOVO> = **aws_instance.NomeNovo**. Isso é usado porque, caso alteremos o nome diretamente pelo arquivo de manifesto, o recurso será destruído e re-criado. Esse approach nos permite a não precisar destruir o recurso. 
+
+`terraform state pull`: Puxa os dados atualizados do **terraform.tfstate** que está em um backend personalizado (e.g S3)
+
+`terraform state rm <RECURSO>`: Remove recursos do **terraform.tfstate**. Tais recursos removidos continuam rodando, porém, não serão mais gerenciados pelo Terraform. Isso significa que, caso esse recurso continue declarado nos arquivos **.tf**, o Terraform tentará **recriá-lo**, já que ele não está mais sendo gerenciado no **terraform.tfstate**
+
+`terraform state show <RECURSO>`: Printa detalhes de um recurso específico rodando na cloud.
