@@ -1042,21 +1042,32 @@ O Terraform Backend consiste no local onde o `terraform.tfstate` será armazenad
 
 Para configurar o S3 como backend, podemos:
 
-- Criar o arquivo **backend.tf**
+- Criar o arquivo **provider.tf**
   
   ```bash
-  touch backend.tf
+  touch privider.tf
   ```
 
 - Inserir nele o seguinte conteúdo:
 
   ```bash
   terraform {
-    backend "s3" {
-      bucket = "BUCKET-NAME"
-      key    = "KEY/terraform.tfstate"
-      region = "REGION"
+    required_providers {
+      aws = {
+        source  = "hashicorp/aws"
+        version = "4.53.0"
+      }
     }
+
+    backend "s3" { #########################
+      bucket = "s3-terraform-backend-azl6" # Configurações
+      key    = "4/terraform.tfstate"       # backend
+      region = "sa-east-1"                 #
+    }
+  }
+
+  provider "aws" {
+    region = "sa-east-1"
   }
   ```
 
