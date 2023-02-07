@@ -1075,11 +1075,29 @@ Pronto! Agora, ao rodar o `terraform apply`, nosso arquivo será direcionado par
 
 # Informações sobre state locking
 
-Quando alguém está usando um arquivo .tf para deployar/destruir recursos, um arquivo chamado **.terrafor.tfstate.lock.info** é criado no diretório, para indicar que ele está "lockado". Quando isso acontece, outros usuários não conseguem performar ações naquele diretório. Quando a ação do primeiro usuário finalizar, o arquivo some, e o diretório ficará livre para receber novos comandos.
+Quando alguém está usando um arquivo .tf para deployar/destruir recursos, um arquivo chamado **.terraform.tfstate.lock.info** é criado no diretório, para indicar que ele está "lockado". Quando isso acontece, outros usuários não conseguem performar ações naquele diretório. Quando a ação do primeiro usuário finalizar, o arquivo some, e o diretório ficará livre para receber novos comandos.
 
 Ao tentar rodar operações em um diretório lockado, teremos um erro: 
 
 ![image](https://user-images.githubusercontent.com/80921933/217188917-45ebbee5-6d28-4758-85c4-de549ec6d82f.png)
 
 Também é possível usar o comando **force-unlock** para forçar a exclusão do arquivo de lock.
+
+# Informação sobre state lock com S3 no backend
+
+Quando usamos o S3 como backend, ele não armazena o arquivo de lock (.terraform.tfstate.lock.info). Para que seja possível armazená-lo usando o S3 como backend, devemos:
+
+- Criar uma tablela no DynamoDB com uma partition-key com o nome de "LockID" no formato de String
+- Referenciar o nome da tabela criada no manifesto do backend
+
+  ```bash
+      backend "s3" { 
+      bucket = "s3-terraform-backend-azl6" 
+      key    = "4/terraform.tfstate"       
+      region = "sa-east-1"
+      dynamodb_table = <DYNAMODB_TABLE_NAME> # Referenciando a tabela                 
+    }
+  ```
+
+Pronto! Agora, o state lock será armazenado nessa tabela.
 
