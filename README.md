@@ -709,7 +709,7 @@ Com o `terraform output`, obtemos a seguinte saída:
 
 # Rodando o terraform plan somente em alguns recursos
 
-Podemos escolher rodar o `terraform plan` em somente alguns recursos, de modo a reduzir o numero de "refreshes" a serem feitos. Para isso, os manifestos dos recursos devem estar distribuídos em diferentes arquivos **.tf**
+Podemos escolher rodar o `terraform plan` em somente alguns recursos, de modo a reduzir o numero de "refreshes" a serem feitos. Para isso, os manifestos dos recursos devem estar distribuídos em diferentes arquivos **.tf**, exemplo: rds.tf, ec2.tf, iam_users.tf... Aí, basta "apontarmos" para o arquivo do recurso sem precisar dar refresh nos demais.
 
 ```bash
 terraform plan -target=<RESOURCE>.<GIVEN_RESOURCE_NAME>
