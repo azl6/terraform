@@ -42,4 +42,69 @@ We can use `t plan` with the `-refresh=false` flag to not refresh our current in
 
 To update the provider's configuration, such as backend or any other block/parameter inside of the provider configuration, we can use the `-reconfigure` flag alongside with `t init`
 
+It's possible to have many declared providers using **aliases**
+
+```bash
+provider "aws" {
+  region = "sa-east-1"
+  alias = "br1" #########
+}                       #
+                        #
+provider "aws" {        #
+  region = "us-west-1"  #
+  alias = "us1" ######### Using aliases!
+}                       #
+                        #
+provider "aws" {        #
+  region = "us-east-1"  #
+  alias = "us2" #########
+}
+```
+
+When declaring a resource, we simply need to choose which provider to use
+
+```bash
+resource "aws_instance" "MyEC2" {
+    ami = "AMI_DA_REGIÃO_DO_ALIAS"
+    instance_type = "t2.micro"
+    provider = "CHOSEN_PROVIDER_NAME"
+}
+```
+
+`t refresh` considers that the current-state of the infrastructure is the correct one. Therefore, it will update your **.tfstate** file to match the current-state of the infrastructure.
+
+`t output OUTPUTNAME` will output a declared output without needing to run `t apply`
+
+We can use a `remote-exec` provisioner to execute commands on remote instances when they first boot up (bootstrapping). We start by defining a `connection` block to specicy the connection type (in this case, SSH)
+
+```bash
+  connection {
+    type     = "ssh"
+    user     = "ec2-user"
+    host     = self.public_ip
+  }
+```
+
+Then, we declare a `provisioner` block of type `remote-exec`, and declare the commands to be run inside of the `inline` block
+
+```bash
+provisioner "remote-exec" {
+
+    inline = [
+      "touch /tmp/whenDidIFirstGotUp.txt",
+      "echo \"this instance got first up at $(date)\" >> /tmp/whenDidIFirstGotUp.txt"
+    ]
+  }
+```
+
+The provisioner `local-exec` works the same way, however, it is to run commands **in my local machine**. Besides that, we use the `command` key word instead of the `inline` block that was used on `remote-exec`
+
+```bash
+  provisioner "local-exec" {
+
+    command = "touch whenIFirstBooted.txt && echo \"My instance first booted up on $(date)\" >> whenIFirstBooted.txt"
+  }
+```
+
+
 

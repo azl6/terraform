@@ -1,0 +1,156 @@
+{
+  "version": 4,
+  "terraform_version": "1.3.7",
+  "serial": 4,
+  "lineage": "4775dbc9-e978-b186-54dd-3223bd8ee964",
+  "outputs": {},
+  "resources": [
+    {
+      "mode": "managed",
+      "type": "aws_instance",
+      "name": "ec2",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "ami": "ami-0b0d54b52c62864d6",
+            "arn": "arn:aws:ec2:sa-east-1:054388726541:instance/i-09e803efedb66a6cf",
+            "associate_public_ip_address": true,
+            "availability_zone": "sa-east-1a",
+            "capacity_reservation_specification": [
+              {
+                "capacity_reservation_preference": "open",
+                "capacity_reservation_target": []
+              }
+            ],
+            "cpu_core_count": 1,
+            "cpu_threads_per_core": 1,
+            "credit_specification": [
+              {
+                "cpu_credits": "standard"
+              }
+            ],
+            "disable_api_stop": false,
+            "disable_api_termination": false,
+            "ebs_block_device": [],
+            "ebs_optimized": false,
+            "enclave_options": [
+              {
+                "enabled": false
+              }
+            ],
+            "ephemeral_block_device": [],
+            "get_password_data": false,
+            "hibernation": false,
+            "host_id": "",
+            "host_resource_group_arn": null,
+            "iam_instance_profile": "",
+            "id": "i-09e803efedb66a6cf",
+            "instance_initiated_shutdown_behavior": "stop",
+            "instance_state": "running",
+            "instance_type": "t2.micro",
+            "ipv6_address_count": 0,
+            "ipv6_addresses": [],
+            "key_name": "azl6-key",
+            "launch_template": [],
+            "maintenance_options": [
+              {
+                "auto_recovery": "default"
+              }
+            ],
+            "metadata_options": [
+              {
+                "http_endpoint": "enabled",
+                "http_put_response_hop_limit": 1,
+                "http_tokens": "optional",
+                "instance_metadata_tags": "disabled"
+              }
+            ],
+            "monitoring": false,
+            "network_interface": [],
+            "outpost_arn": "",
+            "password_data": "",
+            "placement_group": "",
+            "placement_partition_number": 0,
+            "primary_network_interface_id": "eni-00a9e9013168905e7",
+            "private_dns": "ip-172-31-2-177.sa-east-1.compute.internal",
+            "private_dns_name_options": [
+              {
+                "enable_resource_name_dns_a_record": false,
+                "enable_resource_name_dns_aaaa_record": false,
+                "hostname_type": "ip-name"
+              }
+            ],
+            "private_ip": "172.31.2.177",
+            "public_dns": "ec2-177-71-239-185.sa-east-1.compute.amazonaws.com",
+            "public_ip": "177.71.239.185",
+            "root_block_device": [
+              {
+                "delete_on_termination": true,
+                "device_name": "/dev/xvda",
+                "encrypted": false,
+                "iops": 100,
+                "kms_key_id": "",
+                "tags": {},
+                "throughput": 0,
+                "volume_id": "vol-0181060f7d9823629",
+                "volume_size": 8,
+                "volume_type": "gp2"
+              }
+            ],
+            "secondary_private_ips": [],
+            "security_groups": [
+              "default"
+            ],
+            "source_dest_check": true,
+            "subnet_id": "subnet-0ccb36b7e6ce15ff5",
+            "tags": {
+              "Name": "TERRAFORM"
+            },
+            "tags_all": {
+              "Name": "TERRAFORM"
+            },
+            "tenancy": "default",
+            "timeouts": null,
+            "user_data": null,
+            "user_data_base64": null,
+            "user_data_replace_on_change": false,
+            "volume_tags": null,
+            "vpc_security_group_ids": [
+              "sg-0d9a21ee316416bcd"
+            ]
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMCwidXBkYXRlIjo2MDAwMDAwMDAwMDB9LCJzY2hlbWFfdmVyc2lvbiI6IjEifQ=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_key_pair",
+      "name": "deployer",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:sa-east-1:054388726541:key-pair/azl6-key",
+            "fingerprint": "58:14:9e:a9:e6:2b:3f:c1:d4:34:d9:3b:d4:72:26:37",
+            "id": "azl6-key",
+            "key_name": "azl6-key",
+            "key_name_prefix": "",
+            "key_pair_id": "key-0b61844f8a1385818",
+            "key_type": "rsa",
+            "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDF0sR7mSDoKB4MXdB3Vo5VgWtLUmNVovuhgT3DvOXsmxB4pM2kYOb2hoockJ2jGRUkadJc9pAcoI1LwCv3dRtU9BfD8uKVhZ36ZgCWBbgE7rd0xLmW5DPX+fKXtV837rF4hmxHEejY7DnyY8gI3Vs1QtvlMk80+9uFIq0kuvhgL2qreEAoLjuc5/FYRwXwtHMzzE+M0dGyMO/3mDYxSkVYuYA/UXHW94IF47To3kDsbT2Z4fdGNP0UspmM/Rqr644JOBym8xWp2aHKPXYfnvDNG2lDsw0J8XYFbUnb44PWiZM5xYs3ZoIhRq/MQxJcUViFHYikQ0+5bWLdFmCWEbfmYjz96riKoK35qiLuEyzZ9XNZZvyHAx3CpIpxhxtcjGJxxo9RiDOO64f1lNkun8lbBSgcmKefn7vxzs7k/ysuggP6iwiObcpBp8rg+BZGQvYb3lKhbp3Pl60QIWgj0POmPcPNfBAAL3sBqqgatahVRx4o/amov56KoEIg3LhQPWk= azl6@pc",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ=="
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}
