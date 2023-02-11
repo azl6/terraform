@@ -1,18 +1,30 @@
 # To review next time
 
-Each Terraform Workspace allows multiple state files of a single configuration (?)
+We can have multiple provider instances with the help of **aliases**
 
-Understand the concept of root-module and child-module (CHILD-MODULE is the module that gets CALLED. ROOT-MODULE is the module block, that calls a CHILD-MODULE)
+Basic commands: terraform refresh, terraform output
 
-Understand how to reference module's outputs (and how to create them!)
+Review provisioners (**local-exec** and **remote-exec**). They are **inside the resource block**
 
-Provider configuration block is not mandatory with locals and outputs only as resources
+Review **TF_LOG** and **TF_LOG_PATH** environment variables. Also, review its options (TRACE, DEBUG, INFO, WARN and ERROR)
 
-Variables with undefined value will not result in an error. Instead, it will prompt the user to provide its value.
+A local cannot refer to itself or to variables that directly or indirectly refer to it (There can't be a cycle)
 
-Workspaces are managed in the terraform.tfstate.d directory. Remember the terraform.workspace variable. Remember also the workspace commands.
+Understand that the sensible flag stops terraform apply from printing its value. However, the value is still written to the .tfstate file
 
-Review terraform state commands
+Review functions, especially lookup and element
+
+If the backend supports, TF will lock the state for write operations when someone is already performing an action on it. Terraform also have a way to force unlock. Review this, please
+
+Sentinel is a policy-as-code tool to verify required things, e.g If the launched resource has tags, or if the bucket has encryption enabled
+
+Even if we use the sensible=true flag, the output in the tfstate file won't be encrypted. So, the tfstate file itself should be treated as sensible data. TF Cloud encryps tfstate files, and use TLS for encryption in-flight. S3 as a backend also has this option.
+
+For TF Cloud, when using full-remote operations, commands like t plan can be executed in TF Cloud, with its output streamed to the local terminal
+
+terraform graph is used to generate a DOT file, that can be converted to an image to represent our deployment
+
+Provide variables with the TF_VAR_ prefix
 
 # Anotações para a certificação
 

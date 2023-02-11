@@ -39,3 +39,7 @@ We can use `t plan` with the `-destroy` flag to check which resources will be de
 We can use `t plan` with the `-target` flag to specify a target-file to only refresh its contents, to avoid overloading
 
 We can use `t plan` with the `-refresh=false` flag to not refresh our current infrastructure state. We can even use this flag with the `-target` flag
+
+To update the provider's configuration, such as backend or any other block/parameter inside of the provider configuration, we can use the `-reconfigure` flag alongside with `t init`
+
+
