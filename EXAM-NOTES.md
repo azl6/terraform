@@ -129,5 +129,26 @@ If we're using no backend and want to migrate to a new one (e.g S3), Terraform g
 
 We can provide `t init` configurations through the CLI when running it
 
+Failing provisioners (local-exec or remote-exec) will cause `t apply` to fail. We can change this behaviour with the **on_failure** flag, setting it to either **continue** or **fail** (default) depending on our requirement
 
+By default, provisioners are **creation-time provisioners**, which means they will run once the instance starts. If we need to run a script once an instance dies, that's a **deletion-time provisioner**. These take the **when** flag setted to **destroy**
 
+By default, the **.tfvars** searched by Terraform is named **terraform.tfvars**. If we need to use a custom name, such as **custom.tfvars**, we can use the flag **-var-file=VARFILENAME** to specify it
+
+The `required_providers` block (inside the `terraform` block) will inform to TF which provider it will use, so it can download the needed files
+
+The `required_version` parameter references the required Terraform's version. When the configurations are applied, Terraform will store the constraints in the **.tfstate** file, and in case someone tries to apply something out of the defined constraint, Terraform will throw an error
+
+To fetch values from a map, we use the following syntax: var.myVar["key"]
+
+When fetching modules from git repositories, it will be pulled from the main/master branch by default. If we need to change this behaviour, we can use the ref argument
+
+For **implicit dependency**, Terraform can identify in which order the resources should be created. For **explicit dependency**, we explicitly tell Terraform that a resource depends on another with the **depends_on** keyword, which takes a list
+
+We can use a data-source to fetch the latest AMI in each region, for example
+
+The `terraform console` command can be used to start a TF program that takes inputs
+
+Difference 0.11 and 0.12: “${var.instance_type}” → 0.11, var.instance_type → 0.12. In 0.11 it was more verbose.
+
+Github is not a supported backend in Terraform.
