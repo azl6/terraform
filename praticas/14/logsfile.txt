@@ -1,0 +1,148 @@
+2023-02-11T18:38:57.355-0300 [INFO]  Terraform version: 1.3.7
+2023-02-11T18:38:57.355-0300 [DEBUG] using github.com/hashicorp/go-tfe v1.9.0
+2023-02-11T18:38:57.355-0300 [DEBUG] using github.com/hashicorp/hcl/v2 v2.15.0
+2023-02-11T18:38:57.355-0300 [DEBUG] using github.com/hashicorp/terraform-config-inspect v0.0.0-20210209133302-4fd17a0faac2
+2023-02-11T18:38:57.355-0300 [DEBUG] using github.com/hashicorp/terraform-svchost v0.0.0-20200729002733-f050f53b9734
+2023-02-11T18:38:57.355-0300 [DEBUG] using github.com/zclconf/go-cty v1.12.1
+2023-02-11T18:38:57.355-0300 [INFO]  Go runtime version: go1.19.4
+2023-02-11T18:38:57.355-0300 [INFO]  CLI args: []string{"terraform", "plan"}
+2023-02-11T18:38:57.355-0300 [TRACE] Stdout is a terminal of width 121
+2023-02-11T18:38:57.355-0300 [TRACE] Stderr is a terminal of width 121
+2023-02-11T18:38:57.355-0300 [TRACE] Stdin is a terminal
+2023-02-11T18:38:57.355-0300 [DEBUG] Attempting to open CLI config file: /home/azl6/.terraformrc
+2023-02-11T18:38:57.355-0300 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2023-02-11T18:38:57.355-0300 [DEBUG] ignoring non-existing provider search directory terraform.d/plugins
+2023-02-11T18:38:57.355-0300 [DEBUG] ignoring non-existing provider search directory /home/azl6/.terraform.d/plugins
+2023-02-11T18:38:57.355-0300 [DEBUG] ignoring non-existing provider search directory /home/azl6/.local/share/terraform/plugins
+2023-02-11T18:38:57.355-0300 [DEBUG] ignoring non-existing provider search directory /usr/share/cinnamon/terraform/plugins
+2023-02-11T18:38:57.355-0300 [DEBUG] ignoring non-existing provider search directory /usr/share/gnome/terraform/plugins
+2023-02-11T18:38:57.355-0300 [DEBUG] ignoring non-existing provider search directory /home/azl6/.local/share/flatpak/exports/share/terraform/plugins
+2023-02-11T18:38:57.355-0300 [DEBUG] ignoring non-existing provider search directory /var/lib/flatpak/exports/share/terraform/plugins
+2023-02-11T18:38:57.355-0300 [DEBUG] ignoring non-existing provider search directory /usr/local/share/terraform/plugins
+2023-02-11T18:38:57.355-0300 [DEBUG] ignoring non-existing provider search directory /usr/share/terraform/plugins
+2023-02-11T18:38:57.356-0300 [INFO]  CLI command args: []string{"plan"}
+2023-02-11T18:38:57.356-0300 [TRACE] Meta.Backend: no config given or present on disk, so returning nil config
+2023-02-11T18:38:57.356-0300 [TRACE] Meta.Backend: backend has not previously been initialized in this working directory
+2023-02-11T18:38:57.356-0300 [DEBUG] New state was assigned lineage "27031231-d32e-4c7c-65f7-4d937d0dc2b5"
+2023-02-11T18:38:57.356-0300 [TRACE] Meta.Backend: using default local state only (no backend configuration, and no existing initialized backend)
+2023-02-11T18:38:57.356-0300 [TRACE] Meta.Backend: instantiated backend of type <nil>
+2023-02-11T18:38:57.356-0300 [DEBUG] checking for provisioner in "."
+2023-02-11T18:38:57.365-0300 [DEBUG] checking for provisioner in "/usr/bin"
+2023-02-11T18:38:57.365-0300 [TRACE] Meta.Backend: backend <nil> does not support operations, so wrapping it in a local backend
+2023-02-11T18:38:57.366-0300 [INFO]  backend/local: starting Plan operation
+2023-02-11T18:38:57.366-0300 [TRACE] backend/local: requesting state manager for workspace "default"
+2023-02-11T18:38:57.366-0300 [TRACE] backend/local: state manager for workspace "default" will:
+ - read initial snapshot from terraform.tfstate
+ - write new snapshots to terraform.tfstate
+ - create any backup at terraform.tfstate.backup
+2023-02-11T18:38:57.366-0300 [TRACE] backend/local: requesting state lock for workspace "default"
+2023-02-11T18:38:57.366-0300 [TRACE] statemgr.Filesystem: preparing to manage state snapshots at terraform.tfstate
+2023-02-11T18:38:57.366-0300 [TRACE] statemgr.Filesystem: no previously-stored snapshot exists
+2023-02-11T18:38:57.366-0300 [TRACE] statemgr.Filesystem: locking terraform.tfstate using fcntl flock
+2023-02-11T18:38:57.366-0300 [TRACE] statemgr.Filesystem: writing lock metadata to .terraform.tfstate.lock.info
+2023-02-11T18:38:57.366-0300 [TRACE] backend/local: reading remote state for workspace "default"
+2023-02-11T18:38:57.366-0300 [TRACE] statemgr.Filesystem: reading latest snapshot from terraform.tfstate
+2023-02-11T18:38:57.366-0300 [TRACE] statemgr.Filesystem: snapshot file has nil snapshot, but that's okay
+2023-02-11T18:38:57.366-0300 [TRACE] statemgr.Filesystem: read nil snapshot
+2023-02-11T18:38:57.366-0300 [TRACE] backend/local: populating backend.LocalRun for current working directory
+2023-02-11T18:38:57.366-0300 [TRACE] terraform.NewContext: starting
+2023-02-11T18:38:57.366-0300 [TRACE] terraform.NewContext: complete
+2023-02-11T18:38:57.366-0300 [TRACE] backend/local: requesting interactive input, if necessary
+2023-02-11T18:38:57.366-0300 [TRACE] Context.Input: Prompting for provider arguments
+2023-02-11T18:38:57.366-0300 [TRACE] backend/local: running validation operation
+2023-02-11T18:38:57.366-0300 [DEBUG] Building and walking validate graph
+2023-02-11T18:38:57.366-0300 [TRACE] building graph for walkValidate
+2023-02-11T18:38:57.366-0300 [TRACE] Executing graph transform *terraform.ConfigTransformer
+2023-02-11T18:38:57.366-0300 [TRACE] ConfigTransformer: Starting for path:
+2023-02-11T18:38:57.366-0300 [TRACE] Completed graph transform *terraform.ConfigTransformer (no changes)
+2023-02-11T18:38:57.366-0300 [TRACE] Executing graph transform *terraform.RootVariableTransformer
+2023-02-11T18:38:57.366-0300 [TRACE] Completed graph transform *terraform.RootVariableTransformer (no changes)
+2023-02-11T18:38:57.366-0300 [TRACE] Executing graph transform *terraform.ModuleVariableTransformer
+2023-02-11T18:38:57.366-0300 [TRACE] Completed graph transform *terraform.ModuleVariableTransformer (no changes)
+2023-02-11T18:38:57.366-0300 [TRACE] Executing graph transform *terraform.LocalTransformer
+2023-02-11T18:38:57.366-0300 [TRACE] Completed graph transform *terraform.LocalTransformer with new graph:
+  local.app (expand) - *terraform.nodeExpandLocal
+  ------
+2023-02-11T18:38:57.366-0300 [TRACE] Executing graph transform *terraform.OutputTransformer
+2023-02-11T18:38:57.366-0300 [TRACE] OutputTransformer: adding printLocal as *terraform.nodeExpandOutput
+2023-02-11T18:38:57.367-0300 [TRACE] Completed graph transform *terraform.OutputTransformer with new graph:
+  local.app (expand) - *terraform.nodeExpandLocal
+  output.printLocal (expand) - *terraform.nodeExpandOutput
+  ------
+2023-02-11T18:38:57.367-0300 [TRACE] Executing graph transform *terraform.OrphanResourceInstanceTransformer
+2023-02-11T18:38:57.367-0300 [TRACE] Completed graph transform *terraform.OrphanResourceInstanceTransformer (no changes)
+2023-02-11T18:38:57.367-0300 [TRACE] Executing graph transform *terraform.StateTransformer
+2023-02-11T18:38:57.367-0300 [TRACE] StateTransformer: pointless no-op call, creating no nodes at all
+2023-02-11T18:38:57.367-0300 [TRACE] Completed graph transform *terraform.StateTransformer (no changes)
+2023-02-11T18:38:57.367-0300 [TRACE] Executing graph transform *terraform.AttachStateTransformer
+2023-02-11T18:38:57.367-0300 [TRACE] Completed graph transform *terraform.AttachStateTransformer (no changes)
+2023-02-11T18:38:57.367-0300 [TRACE] Executing graph transform *terraform.OrphanOutputTransformer
+2023-02-11T18:38:57.367-0300 [TRACE] Completed graph transform *terraform.OrphanOutputTransformer (no changes)
+2023-02-11T18:38:57.367-0300 [TRACE] Executing graph transform *terraform.AttachResourceConfigTransformer
+2023-02-11T18:38:57.367-0300 [TRACE] Completed graph transform *terraform.AttachResourceConfigTransformer (no changes)
+2023-02-11T18:38:57.367-0300 [TRACE] Executing graph transform *terraform.graphTransformerMulti
+2023-02-11T18:38:57.367-0300 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.ProviderConfigTransformer
+2023-02-11T18:38:57.367-0300 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.ProviderConfigTransformer with new graph:
+  local.app (expand) - *terraform.nodeExpandLocal
+  output.printLocal (expand) - *terraform.nodeExpandOutput
+  ------
+2023-02-11T18:38:57.367-0300 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.MissingProviderTransformer
+2023-02-11T18:38:57.367-0300 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.MissingProviderTransformer (no changes)
+2023-02-11T18:38:57.367-0300 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.ProviderTransformer
+2023-02-11T18:38:57.367-0300 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.ProviderTransformer (no changes)
+2023-02-11T18:38:57.367-0300 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.PruneProviderTransformer
+2023-02-11T18:38:57.367-0300 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.PruneProviderTransformer (no changes)
+2023-02-11T18:38:57.367-0300 [TRACE] Completed graph transform *terraform.graphTransformerMulti (no changes)
+2023-02-11T18:38:57.367-0300 [TRACE] Executing graph transform *terraform.RemovedModuleTransformer
+2023-02-11T18:38:57.367-0300 [TRACE] Completed graph transform *terraform.RemovedModuleTransformer (no changes)
+2023-02-11T18:38:57.367-0300 [TRACE] Executing graph transform *terraform.AttachSchemaTransformer
+2023-02-11T18:38:57.367-0300 [TRACE] Completed graph transform *terraform.AttachSchemaTransformer (no changes)
+2023-02-11T18:38:57.367-0300 [TRACE] Executing graph transform *terraform.ModuleExpansionTransformer
+2023-02-11T18:38:57.367-0300 [TRACE] Completed graph transform *terraform.ModuleExpansionTransformer (no changes)
+2023-02-11T18:38:57.367-0300 [TRACE] Executing graph transform *terraform.ReferenceTransformer
+2023-02-11T18:38:57.367-0300 [DEBUG] ReferenceTransformer: "local.app (expand)" references: []
+2023-02-11T18:38:57.367-0300 [DEBUG] ReferenceTransformer: "output.printLocal (expand)" references: [local.app (expand)]
+2023-02-11T18:38:57.367-0300 [TRACE] Completed graph transform *terraform.ReferenceTransformer with new graph:
+  local.app (expand) - *terraform.nodeExpandLocal
+  output.printLocal (expand) - *terraform.nodeExpandOutput
+    local.app (expand) - *terraform.nodeExpandLocal
+  ------
+2023-02-11T18:38:57.367-0300 [TRACE] Executing graph transform *terraform.AttachDependenciesTransformer
+2023-02-11T18:38:57.367-0300 [TRACE] Completed graph transform *terraform.AttachDependenciesTransformer (no changes)
+2023-02-11T18:38:57.367-0300 [TRACE] Executing graph transform *terraform.attachDataResourceDependsOnTransformer
+2023-02-11T18:38:57.367-0300 [TRACE] Completed graph transform *terraform.attachDataResourceDependsOnTransformer (no changes)
+2023-02-11T18:38:57.367-0300 [TRACE] Executing graph transform *terraform.DestroyEdgeTransformer
+2023-02-11T18:38:57.367-0300 [TRACE] Completed graph transform *terraform.DestroyEdgeTransformer (no changes)
+2023-02-11T18:38:57.367-0300 [TRACE] Executing graph transform *terraform.pruneUnusedNodesTransformer
+2023-02-11T18:38:57.367-0300 [TRACE] Completed graph transform *terraform.pruneUnusedNodesTransformer (no changes)
+2023-02-11T18:38:57.367-0300 [TRACE] Executing graph transform *terraform.TargetsTransformer
+2023-02-11T18:38:57.367-0300 [TRACE] Completed graph transform *terraform.TargetsTransformer (no changes)
+2023-02-11T18:38:57.367-0300 [TRACE] Executing graph transform *terraform.ForcedCBDTransformer
+2023-02-11T18:38:57.367-0300 [TRACE] Completed graph transform *terraform.ForcedCBDTransformer (no changes)
+2023-02-11T18:38:57.367-0300 [TRACE] Executing graph transform *terraform.CloseProviderTransformer
+2023-02-11T18:38:57.367-0300 [TRACE] Completed graph transform *terraform.CloseProviderTransformer (no changes)
+2023-02-11T18:38:57.367-0300 [TRACE] Executing graph transform *terraform.CloseRootModuleTransformer
+2023-02-11T18:38:57.367-0300 [TRACE] Completed graph transform *terraform.CloseRootModuleTransformer with new graph:
+  local.app (expand) - *terraform.nodeExpandLocal
+  output.printLocal (expand) - *terraform.nodeExpandOutput
+    local.app (expand) - *terraform.nodeExpandLocal
+  root - *terraform.nodeCloseModule
+    output.printLocal (expand) - *terraform.nodeExpandOutput
+  ------
+2023-02-11T18:38:57.367-0300 [TRACE] Executing graph transform *terraform.TransitiveReductionTransformer
+2023-02-11T18:38:57.367-0300 [TRACE] Completed graph transform *terraform.TransitiveReductionTransformer (no changes)
+2023-02-11T18:38:57.367-0300 [DEBUG] Starting graph walk: walkValidate
+2023-02-11T18:38:57.367-0300 [TRACE] vertex "local.app (expand)": starting visit (*terraform.nodeExpandLocal)
+2023-02-11T18:38:57.367-0300 [TRACE] vertex "local.app (expand)": expanding dynamic subgraph
+2023-02-11T18:38:57.367-0300 [TRACE] Expanding local: adding local.app as *terraform.NodeLocal
+2023-02-11T18:38:57.367-0300 [TRACE] vertex "local.app (expand)": entering dynamic subgraph
+2023-02-11T18:38:57.367-0300 [TRACE] vertex "local.app": starting visit (*terraform.NodeLocal)
+2023-02-11T18:38:57.367-0300 [ERROR] vertex "local.app" error: Self-referencing local value
+2023-02-11T18:38:57.367-0300 [TRACE] vertex "local.app": visit complete, with errors
+2023-02-11T18:38:57.367-0300 [TRACE] vertex "local.app (expand)": dynamic subgraph encountered errors: Self-referencing local value
+2023-02-11T18:38:57.367-0300 [ERROR] vertex "local.app (expand)" error: Self-referencing local value
+2023-02-11T18:38:57.367-0300 [TRACE] vertex "local.app (expand)": visit complete, with errors
+2023-02-11T18:38:57.367-0300 [TRACE] dag/walk: upstream of "output.printLocal (expand)" errored, so skipping
+2023-02-11T18:38:57.368-0300 [TRACE] dag/walk: upstream of "root" errored, so skipping
+2023-02-11T18:38:57.368-0300 [TRACE] statemgr.Filesystem: removing lock metadata file .terraform.tfstate.lock.info
+2023-02-11T18:38:57.368-0300 [TRACE] statemgr.Filesystem: unlocking terraform.tfstate using fcntl flock

@@ -110,3 +110,24 @@ The `TF_LOG` environment variable can be used when we want logs when executing `
 
 The `TF_LOG_PATH` environment variable can be used when we want **to direct logs to a file** when executing `t plan` and `t apply`
 
+Locals can't reference themselves, directly or indirectly
+
+When someone is running `t apply`, the `terraform.lock.hcl` file is created. This lock is to prevent that any other person tries to perform write operations while the lock is owned by someone else. We can force the unlock by running `terraform force-unlock LOCKID
+
+Sentinel is a policy-as-code tool, to verify whether resources are "compliant" when we're launching them with Terraform. We can add rules such as "every security-group shouldn't allow SSH from 0.0.0.0/0", etc...
+
+`t graph` is a command that can be used to generate a DOT file, which can be thrown in 3rd party softwares to analyze the launched infrastructure
+
+The prefix **TF_VAR_** can be used to provide values to variables, e.g: 
+
+```bash
+export TF_VAR_dev="t2.micro"
+export TF_VAR_prod="t2.large"
+```
+
+If we're using no backend and want to migrate to a new one (e.g S3), Terraform gives us the option to migrate our **.tfstate** file to it
+
+We can provide `t init` configurations through the CLI when running it
+
+
+
