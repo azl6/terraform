@@ -10,8 +10,7 @@ Provider configuration block is not mandatory with locals and outputs only as re
 
 Variables with undefined value will not result in an error. Instead, it will prompt the user to provide its value.
 
-Workspaces are managed in the terraform.tfstate.d directory. Remember the terraform.
-workspace variable. Remember also the workspace commands.
+Workspaces are managed in the terraform.tfstate.d directory. Remember the terraform.workspace variable. Remember also the workspace commands.
 
 Review terraform state commands
 
