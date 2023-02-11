@@ -2,7 +2,7 @@
 
 Each Terraform Workspace allows multiple state files of a single configuration (?)
 
-Understand the concept of root-module and child-module
+Understand the concept of root-module and child-module (CHILD-MODULE is the module that gets CALLED. ROOT-MODULE is the module block, that calls a CHILD-MODULE)
 
 Understand how to reference module's outputs (and how to create them!)
 

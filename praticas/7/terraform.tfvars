@@ -1,0 +1,1 @@
+#instanceType = "t2.micro"
