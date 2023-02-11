@@ -106,5 +106,7 @@ The provisioner `local-exec` works the same way, however, it is to run commands 
   }
 ```
 
+The `TF_LOG` environment variable can be used when we want logs when executing `t plan` and `t apply`
 
+The `TF_LOG_PATH` environment variable can be used when we want **to direct logs to a file** when executing `t plan` and `t apply`
 
