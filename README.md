@@ -26,6 +26,38 @@ terraform graph is used to generate a DOT file, that can be converted to an imag
 
 Provide variables with the TF_VAR_ prefix
 
+When configuring a diff backend (no backend > backend) for the first time, TF gives us the option to migrate the .tfstate file to the new backend
+
+We don't need to provide every single configuration on the backend configuration. We can provide it on initialization with t init -option1 -option2 -optionn...
+
+By default, provisioners that fail will cause terraform apply to fail. We can use the on_failure={continue,fail} to change this behaviour
+
+Review creation-time provisioners and deletion-time provisioners (using the when flag)
+
+Provide a custom-named .tfvars file with the -var-file= flag on terraform apply
+
+Check the required_providers block
+
+Check the required_version variable, which references Terraform's version!
+
+To fetch values from a map, we use the following syntax: var.varName["key"]
+
+When getting modules from a git repo, by default, the default branch will be used. To change this behaviour, we can use the ref argument (refer to item 55.2)
+
+Explicit resource dependency with the depends_on parameter. It takes a list.
+
+Data source to get the latest update of AMI, for example
+
+Remember the zipmap function, which builds a map out of two lists
+
+The terraform console command provides an interactive console for evaluating expressions.
+
+Difference 0.11 and 0.12 “${var.instance_type}” → 0.11 var.instance_type → 0.12
+
+GitHub is not the supported backend type in Terraform.
+
+terraform refresh considers the current-state to be the "correct", and updates the state file to match it
+
 # Anotações para a certificação
 
 Terraform Enterprise suports Airgapped Systems (isolated systems without internet connectivity)
