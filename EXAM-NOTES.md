@@ -152,3 +152,5 @@ The `terraform console` command can be used to start a TF program that takes inp
 Difference 0.11 and 0.12: “${var.instance_type}” → 0.11, var.instance_type → 0.12. In 0.11 it was more verbose.
 
 Github is not a supported backend in Terraform.
+
+With taint, the resource will be re-created on next terraform apply operation.
