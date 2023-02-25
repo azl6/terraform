@@ -8,7 +8,7 @@ We can list our workspaces with `t workspace list`
 
 When we enable workspaces, the variable terraform.workspace becomes available to be used. It will return the current workspace's name and it's frequently used alongside with the lookup() function. This usage allows us to provide different values to parameters depending on our current workspace
 
-Workspaces state files (.tfstate) are managed under the specific's workspace folder, inside of the ?**terraform.tfstate.d** folder
+Workspaces state files (.tfstate) are managed under the specific's workspace folder, inside of the **terraform.tfstate.d** folder
 
 Root-module is the module that has a "module" block, calling a Child-module
 

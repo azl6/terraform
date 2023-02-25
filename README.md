@@ -84,11 +84,11 @@ Esse comando nos mostrará o que será criado com um código **.tf**
 terraform plan
 ```
 
-Outra funcionalidade sua é a de mostrar quando o **desired-state** da infraestrutura (configurações definidas no **.tf**) encontra-se diferente do **current-state** (devido a alguma alteração manual, etc...). Nesse caso, com o **terraform plan**, o Terraform nos avisará que eles estão diferentes, e mostrará o que precisa ser alterado para que tudo seja retornado ao **desired-state**. Tais mudanças só serão "commitadas" com o **terraform apply**.
+Outra funcionalidade sua é a de mostrar quando o **desired-state** da infraestrutura (configurações definidas no **.tf**) encontra-se diferente do **current-state** (devido a alguma alteração manual, etc...). Nesse caso, com o **terraform plan**, o Terraform nos avisará que eles estão diferentes (porque no background desse comando, o `terraform refresh também é rodado`), e mostrará o que precisa ser alterado para que tudo seja retornado ao **desired-state**. Tais mudanças só serão "commitadas" com o **terraform apply**.
 
 # Criando recursos o terraform apply
 
-O **terraform apply** aplica e cria os recursos descritos no manifesto **.tf**
+O **terraform apply** aplica e cria os recursos descritos no manifesto **.tf**, além de criar/atualizar o **tfstate** file
 
 ```bash
 terraform apply
@@ -162,7 +162,7 @@ terraform init -upgrade
 ```
 # Exemplo simpleS3Bucket e a utilização dos outputs
 
-Os outputs podem ser utilizados para printarem atributos dos recursos criados. Nesse exemplo, printei o **arn** e **região** do bucket criadom referenciando-o pelo seu nome (aws_s3_bucket.myBucket.\<ATRIBUTO>). **Caso nenhum \<ATRIBUTO> seja fornecido, tudo será printado!**
+Os outputs podem ser utilizados para printarem atributos dos recursos criados. Nesse exemplo, printei o **arn** e **região** do bucket criado referenciando-o pelo seu nome (aws_s3_bucket.myBucket.\<ATRIBUTO>). **Caso nenhum \<ATRIBUTO> seja fornecido, tudo será printado!**
 
 Atributos que podem ser usados como output podem ser encontrados na página do recurso (aws_instance, aws_s3_bucket, etc...),na seção **Argument Reference** como no seguinte link: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#argument-reference
 
@@ -988,7 +988,7 @@ Agora, basta rodar os comandos e tudo funcionará normalmente.
 
 Ao declarar um módulo, podemos ter a necessidade de ter valores dinâmicos. 
 
-Tal requerimento pode ser atingido com a utilização de variáveis
+Tal requerimento pode ser atingido com a utilização de variáveis (o arquivo **variables.tf** deve estar na mesma pasta do child-module)
 
 ```bash
 resource "aws_instance" "myEC2" {
